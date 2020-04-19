@@ -1,0 +1,14 @@
+{
+	"name": "sinker",
+	"url": "https://github.com/fal-works/sinker/",
+	"license": "MIT",
+	"tags": [],
+	"description": "Core utility library.",
+	"version": "0.1.0",
+	"classPath": "src/",
+	"releasenote": "Initial release. Everything may change in future.",
+	"contributors": [
+		"fal-works"
+	],
+	"dependencies": {}
+}
