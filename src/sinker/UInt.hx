@@ -179,10 +179,21 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 		return this == 0;
 
 	/**
-		@return `this + 1`. Unlike `++this`, `plusOne()` does not modify `this` value.
+		Returns `this + 1`.
+		Unlike `++this`, it does not modify `this` value.
 	**/
 	public extern inline function plusOne(): UInt {
 		return new UInt(this + 1);
+	}
+
+	/**
+		Returns `this - 1`.
+		Unlike `--this`, it does not modify `this` value.
+
+		It also does not check against negative even `#if debug`.
+	**/
+	public extern inline function minusOneUnsafe(): UInt {
+		return new UInt(this - 1);
 	}
 
 	@:allow(sinker)
