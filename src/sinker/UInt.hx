@@ -196,6 +196,18 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 		return new UInt(this - 1);
 	}
 
+	/**
+		@return `this` if it is not `UInt.none`, otherwise `defaultValue`.
+	**/
+	public extern inline function or(defaultValue: UInt): UInt
+		return if (isSome()) new UInt(this) else defaultValue;
+
+	/**
+		@return `this` if it is not `UInt.none`, otherwise the result of `defaultValueFactory`.
+	**/
+	public extern inline function orElse(defaultValueFactory: () -> UInt): UInt
+		return if (isSome()) new UInt(this) else defaultValueFactory();
+
 	@:allow(sinker)
 	extern inline function new(v: Int)
 		this = v;
