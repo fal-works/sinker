@@ -8,7 +8,7 @@ class ArrayExtension {
 	/**
 		@return The last element of the array.
 	**/
-	public static extern inline function peekSafe<T>(_this: StrictArray<T>): Maybe<T> {
+	public static extern inline function peekSafe<T>(_this: Array<T>): Maybe<T> {
 		final len = _this.length;
 		return if (len > 0) Maybe.from(_this[len - 1]) else Maybe.none();
 	}
@@ -16,7 +16,7 @@ class ArrayExtension {
 	/**
 		@return The last element of the array.
 	**/
-	public static extern inline function peek<T>(_this: StrictArray<T>): T {
+	public static extern inline function peek<T>(_this: Array<T>): T {
 		return _this[_this.length - 1];
 	}
 
@@ -25,11 +25,11 @@ class ArrayExtension {
 		@return The filled array.
 	**/
 	public static inline function fillIn<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T,
 		startIndex: UInt,
 		endIndex: UInt
-	): StrictArray<T> {
+	): Array<T> {
 		#if debug
 		if (endIndex > _this.length) throw "Invalid value.";
 		#end
@@ -48,9 +48,9 @@ class ArrayExtension {
 		@return The filled array.
 	**/
 	public static extern inline function fill<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T
-	): StrictArray<T> {
+	): Array<T> {
 		return fillIn(_this, value, 0, _this.length);
 	}
 
@@ -58,7 +58,7 @@ class ArrayExtension {
 		Copies elements from source to destination position within a same array.
 	**/
 	public static inline function blitInternal<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		sourcePosition: UInt,
 		destinationPosition: UInt,
 		rangeLength: UInt
@@ -103,11 +103,11 @@ class ArrayExtension {
 	/**
 		@return `true` if the array contains an element that is `element == value`.
 	**/
-	public static inline function has<T>(_this: StrictArray<T>, value: T): Bool
+	public static inline function has<T>(_this: Array<T>, value: T): Bool
 		return _this.indexOf(value, 0) >= 0;
 
 	public static inline function hasIn<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T,
 		start: UInt,
 		end: UInt
@@ -128,7 +128,7 @@ class ArrayExtension {
 		@return `true` if the array is not null and contains an element that is `element == value`.
 	**/
 	public static inline function existsAndHas<T>(
-		_this: Null<StrictArray<T>>,
+		_this: Null<Array<T>>,
 		value: T
 	): Bool
 		return _this != null && has(_this, value);
@@ -137,7 +137,7 @@ class ArrayExtension {
 		@return The first found element that is `element == value`.
 	**/
 	public static inline function find<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T,
 		defaultValue: T
 	): T {
@@ -149,7 +149,7 @@ class ArrayExtension {
 		Swaps elements at `indexA` and `indexB`.
 	**/
 	public static inline function swap<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		indexA: UInt,
 		indexB: UInt
 	): Void {
@@ -168,8 +168,8 @@ class ArrayExtension {
 		@return `true` if all elements are equal (including the order).
 	**/
 	public static inline function equals<T>(
-		_this: StrictArray<T>,
-		other: StrictArray<T>
+		_this: Array<T>,
+		other: Array<T>
 	): Bool {
 		final len = _this.length;
 
@@ -196,8 +196,8 @@ class ArrayExtension {
 		@return `true` if all elements are equal (including the order).
 	**/
 	public static inline function compare<T>(
-		_this: StrictArray<T>,
-		other: StrictArray<T>,
+		_this: Array<T>,
+		other: Array<T>,
 		comparator: (a: T, b: T) -> Bool
 	): Bool {
 		final len = _this.length;
@@ -224,8 +224,8 @@ class ArrayExtension {
 		Pushes all elements in `other` to `this` array.
 	**/
 	public static inline function pushFromArray<T>(
-		_this: StrictArray<T>,
-		other: StrictArray<T>
+		_this: Array<T>,
+		other: Array<T>
 	): Void {
 		var writeIndex = _this.length;
 		var readIndex = 0;
@@ -244,7 +244,7 @@ class ArrayExtension {
 		Removes an element at `index.
 		@return Removed element.
 	**/
-	public static inline function removeAt<T>(_this: StrictArray<T>, index: UInt): T {
+	public static inline function removeAt<T>(_this: Array<T>, index: UInt): T {
 		final arrayLength = _this.length;
 		final rangeLength = arrayLength - index - 1;
 		final removed = _this[index];
@@ -260,8 +260,8 @@ class ArrayExtension {
 		@return New array.
 	**/
 	public static inline function flatten<T>(
-		arrays: StrictArray<StrictArray<T>>
-	): StrictArray<T> {
+		arrays: Array<Array<T>>
+	): Array<T> {
 		final arrayCount = arrays.length;
 		var elementCount = 0;
 
@@ -287,7 +287,7 @@ class ArrayExtension {
 		Pushes `value` to `this` only if `this` does not have any element equal to `value`.
 		@return `true` if pushed.
 	**/
-	public static inline function pushIfAbsent<T>(_this: StrictArray<T>, value: T): Bool {
+	public static inline function pushIfAbsent<T>(_this: Array<T>, value: T): Bool {
 		if (has(_this, value)) return false;
 
 		_this.push(value);
@@ -301,7 +301,7 @@ class ArrayExtension {
 		@return `true` if pushed.
 	**/
 	public static inline function pushIfNotFound<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T,
 		equalityPredicate: (a: T, b: T) -> Bool
 	): Bool {
@@ -318,7 +318,7 @@ class ArrayExtension {
 		@param equalityPredicate Function that returns `true` if two given elements
 			should be considered as equal.
 	**/
-	public static inline function deduplicate<T>(_this: StrictArray<T>): Void {
+	public static inline function deduplicate<T>(_this: Array<T>): Void {
 		final length = _this.length;
 
 		if (length > 0) {
@@ -349,8 +349,8 @@ class ArrayExtension {
 		@return New array with deduplicated values from `this`.
 	**/
 	public static inline function copyDeduplicated<T>(
-		_this: StrictArray<T>
-	): StrictArray<T> {
+		_this: Array<T>
+	): Array<T> {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {

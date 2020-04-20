@@ -9,8 +9,8 @@ class ArrayNullableExtension {
 		@return Shallow copy of `this`, or `null` if `this` is `null`.
 	**/
 	public static inline function copyNullable<T>(
-		_this: Null<StrictArray<T>>
-	): Null<StrictArray<T>>
+		_this: Null<Array<T>>
+	): Null<Array<T>>
 		return if (_this != null) _this.copy() else null;
 
 	/**
@@ -18,7 +18,7 @@ class ArrayNullableExtension {
 		`defaultValue` if this array is `null` or the element is not found.
 	**/
 	public static inline function findIfNotNull<T>(
-		_this: Null<StrictArray<T>>,
+		_this: Null<Array<T>>,
 		value: T,
 		defaultValue: T
 	): T {

@@ -13,7 +13,7 @@ class ArrayFunctionalExtension {
 		Runs a given function for each element.
 	**/
 	public static inline function forEach<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		callback: T->Void
 	): Void {
 		final len = _this.length;
@@ -29,9 +29,9 @@ class ArrayFunctionalExtension {
 		@return `this`
 	**/
 	public static inline function populate<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		factory: Void->T
-	): StrictArray<T> {
+	): Array<T> {
 		final len = _this.length;
 		var i = UInt.zero;
 		while (i < len) {
@@ -46,7 +46,7 @@ class ArrayFunctionalExtension {
 		@return The index of the first found element that is `element == value`.
 	**/
 	public static inline function indexOfFirst<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		predicate: (element: T) -> Bool
 	): Int {
 		final len = _this.length;
@@ -69,7 +69,7 @@ class ArrayFunctionalExtension {
 		@return `true` if found.
 	**/
 	public static inline function hasAny<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		predicate: T->Bool
 	): Bool {
 		final len = _this.length;
@@ -93,7 +93,7 @@ class ArrayFunctionalExtension {
 		@return `true` if found.
 	**/
 	public static inline function hasEqualIn<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T,
 		equalityPredicate: T->T->Bool,
 		start: UInt,
@@ -119,7 +119,7 @@ class ArrayFunctionalExtension {
 		@return `true` if found.
 	**/
 	public static inline function hasEqual<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		value: T,
 		equalityPredicate: T->T->Bool
 	): Bool {
@@ -132,7 +132,7 @@ class ArrayFunctionalExtension {
 		@return First element that matches to `predicate`. `defaultValue` if not found.
 	**/
 	public static inline function findFirst<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		predicate: T->Bool,
 		defaultValue: T
 	): T {
@@ -160,7 +160,7 @@ class ArrayFunctionalExtension {
 		@return `true` if found.
 	**/
 	public static inline function forFirst<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		predicate: T->Bool,
 		processCallback: T->Void
 	): Bool {
@@ -189,7 +189,7 @@ class ArrayFunctionalExtension {
 		@return First element that matches to `predicate`. `defaultValue` if not found.
 	**/
 	public static inline function removeFirst<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		predicate: T->Bool,
 		defaultValue: T
 	): T {
@@ -217,7 +217,7 @@ class ArrayFunctionalExtension {
 		@return `true` if any found.
 	**/
 	public static inline function filterForEach<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		predicate: T->Bool,
 		processCallback: T->Void
 	): Bool {
@@ -246,7 +246,7 @@ class ArrayFunctionalExtension {
 			should be considered as equal.
 	**/
 	public static inline function deduplicateWith<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		equalityPredicate: T->T->Bool
 	): Void {
 		final length = _this.length;
@@ -281,9 +281,9 @@ class ArrayFunctionalExtension {
 		@return New array with deduplicated values from `this`.
 	**/
 	public static inline function copyDeduplicatedWith<T>(
-		_this: StrictArray<T>,
+		_this: Array<T>,
 		equalityPredicate: T->T->Bool
-	): StrictArray<T> {
+	): Array<T> {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {

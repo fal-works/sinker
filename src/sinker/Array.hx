@@ -1,8 +1,10 @@
 package sinker;
 
+import Array as StdArray;
+
 /**
 	Wrapper of standard `Array`.
-	- Uses `sinker.UInt` for indices.
+	- Uses `sinker.UInt` for length and indices.
 	- Uses `unsafeGet()`/`unsafeSet()` on cpp target.
 	- Does boundary check `#if debug`.
 **/
@@ -18,7 +20,7 @@ package sinker;
 	remove,
 	iterator
 )
-abstract StrictArray<T>(Array<T>) from Array<T> to Array<T> {
+abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	public var length(get, never): UInt;
 
 	extern inline function get_length(): UInt {
@@ -29,12 +31,12 @@ abstract StrictArray<T>(Array<T>) from Array<T> to Array<T> {
 		@return New array with zero length.
 	**/
 	public extern inline function new()
-		this = [];
+		this = new StdArray();
 
 	/**
 		Casts `this` to standard `Array`.
 	**/
-	public extern inline function std(): Array<T>
+	public extern inline function std(): StdArray<T>
 		return this;
 
 	@:op([]) extern inline function get(index: UInt): T {
