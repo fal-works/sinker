@@ -1,4 +1,4 @@
-package sinker.types;
+package sinker;
 
 import haxe.Constraints.Function;
 

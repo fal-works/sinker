@@ -1,6 +1,4 @@
-package sinker.tools;
-
-import sinker.types.UInt;
+package sinker;
 
 /**
 	Utility for `UInt`.

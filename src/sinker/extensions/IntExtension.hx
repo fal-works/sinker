@@ -1,6 +1,6 @@
 package sinker.extensions;
 
-import sinker.types.UInt;
+import sinker.UInt;
 
 class IntExtension {
 	/**
@@ -38,7 +38,7 @@ class IntExtension {
 	/**
 		@return The absolute value of `this`.
 	**/
-	@:access(sinker.types.UInt)
+	@:access(sinker.UInt)
 	public static extern inline function absolute(_this: Int): UInt {
 		return new UInt(if (0 <= _this) _this else -_this);
 	}

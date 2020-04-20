@@ -1,11 +1,8 @@
-package sinker.types;
-
-import sinker.types.UInt;
-import sinker.tools.ArrayTools;
+package sinker;
 
 /**
 	Wrapper of standard `Array`.
-	- Uses `sinker.types.UInt` for indices.
+	- Uses `sinker.UInt` for indices.
 	- Uses `unsafeGet()`/`unsafeSet()` on cpp target.
 	- Does boundary check `#if debug`.
 **/

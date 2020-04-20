@@ -1,7 +1,4 @@
-package sinker.tools;
-
-import sinker.types.StrictArray;
-import sinker.types.UInt;
+package sinker;
 
 class ArrayTools {
 	/**

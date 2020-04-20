@@ -1,6 +1,6 @@
 package sinker.extensions;
 
-import sinker.types.UInt;
+import sinker.UInt;
 
 using sinker.extensions.IntExtension;
 

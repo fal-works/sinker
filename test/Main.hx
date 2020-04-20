@@ -1,7 +1,7 @@
-import sinker.Imports;
-import sinker.Globals.*;
+import sinker.*;
+import sinker.globals.Globals.*;
 
-using sinker.Usings;
+using sinker.extensions.Index;
 
 class Main {
 	static function test(shouldBeTrue: Bool): Void {

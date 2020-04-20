@@ -1,7 +1,7 @@
-package sinker;
+package sinker.globals;
 
-import sinker.types.Maybe;
-import sinker.types.UInt;
+import sinker.Maybe;
+import sinker.UInt;
 
 /**
 	Functions for global use.

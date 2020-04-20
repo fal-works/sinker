@@ -1,4 +1,4 @@
-package sinker.types;
+package sinker;
 
 /**
 	Unsigned integer based on `Int`.

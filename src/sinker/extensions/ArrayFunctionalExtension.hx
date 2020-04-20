@@ -1,6 +1,6 @@
 package sinker.extensions;
 
-import sinker.Imports;
+import sinker.*;
 
 using sinker.extensions.ArrayExtension;
 using sinker.extensions.ArrayFunctionalExtension;

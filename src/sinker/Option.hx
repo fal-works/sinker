@@ -1,4 +1,4 @@
-package sinker.types;
+package sinker;
 
 import haxe.ds.Option as StdOption;
 

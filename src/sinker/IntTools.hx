@@ -1,4 +1,4 @@
-package sinker.tools;
+package sinker;
 
 /**
 	Utility for `Int`.
