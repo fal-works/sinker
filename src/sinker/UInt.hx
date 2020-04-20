@@ -178,6 +178,13 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	public extern inline function isZero(): Bool
 		return this == 0;
 
+	/**
+		@return `this + 1`. Unlike `++this`, `plusOne()` does not modify `this` value.
+	**/
+	public extern inline function plusOne(): UInt {
+		return new UInt(this + 1);
+	}
+
 	@:allow(sinker)
 	extern inline function new(v: Int)
 		this = v;
