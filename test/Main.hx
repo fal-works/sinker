@@ -9,11 +9,11 @@ class Main {
 	}
 
 	static function main() {
-		test(10.divideBy(2) == 5);
-		test(10.modulo(3) == 1);
-		test(uint(3).powerOf2() == 8);
-		test(3.square() == 9);
-		test((-3).absolute() == 3);
+		test(Ints.divide(10, 2) == 5);
+		test(Ints.modulo(10, 3) == 1);
+		test(UInts.powerOf2(uint(3)) == 8);
+		test(Ints.square(3) == 9);
+		test(Ints.absolute(-3) == 3);
 
 		test(Floats.toInt(1.5) == 1);
 
