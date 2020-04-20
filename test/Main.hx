@@ -15,7 +15,7 @@ class Main {
 		test((3 : Int).square() == 9);
 		test((-3 : Int).absolute() == 3);
 
-		test((1.5).toInt() == 1);
+		test(Floats.toInt(1.5) == 1);
 
 		test(Maybe.from(10).isSome());
 		test(Option.some(1).isSome());

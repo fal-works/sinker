@@ -7,9 +7,6 @@ typedef IntExtension_ = sinker.extensions.IntExtension;
 typedef UIntExtension_ = sinker.extensions.UIntExtension;
 
 @:dox(hide)
-typedef FloatExtension_ = sinker.extensions.FloatExtension;
-
-@:dox(hide)
 typedef ArrayExtension_ = sinker.extensions.ArrayExtension;
 
 @:dox(hide)
