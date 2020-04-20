@@ -129,6 +129,12 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	@:op(A >>> B) function unsignedRightShift(shiftCount: UInt): UInt;
 
 	/**
+		Casts `this` to standard `UInt`.
+	**/
+	public extern inline function std(): std.UInt
+		return this;
+
+	/**
 		Casts `this` to `Int`.
 	**/
 	public extern inline function int(): Int
