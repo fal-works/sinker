@@ -93,7 +93,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 		#else
 		final len = length;
 		final newArray: Array<S> = Arrays.allocate(len);
-		var i = new UInt(0);
+		var i = UInt.zero;
 		while (i < len) {
 			newArray[i] = callback(get(i));
 			++i;
