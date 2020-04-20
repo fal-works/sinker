@@ -172,6 +172,12 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	public extern inline function isNone(): Bool
 		return this == UInt.none.int();
 
+	/**
+		@return `true` if `this` is `0`.
+	**/
+	public extern inline function isZero(): Bool
+		return this == 0;
+
 	@:allow(sinker)
 	extern inline function new(v: Int)
 		this = v;
