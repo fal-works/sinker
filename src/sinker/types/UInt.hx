@@ -46,16 +46,16 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 		return new UInt(v);
 	}
 
-	@:op(A + B) function add(v: UInt): UInt;
-
 	@:op(A + B) static extern inline function addInt(a: UInt, b: Int): UInt
 		return fromInt(a.int() + b);
 
-	@:op(A - B) extern inline function subtract(v: UInt): UInt
-		return fromInt(this - v);
+	@:op(A + B) function add(v: UInt): UInt;
 
 	@:op(A - B) static extern inline function subtractInt(a: UInt, b: Int): UInt
 		return fromInt(a.int() - b);
+
+	@:op(A - B) extern inline function subtract(v: UInt): UInt
+		return fromInt(this - v);
 
 	@:op(A * B) function multiply(v: UInt): UInt;
 
@@ -63,62 +63,70 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 
 	@:op(++A) function preIncrement(): UInt;
 
-	@:op(--A) function preDecrement(): UInt;
+	@:op(--A) extern inline function preDecrement(): UInt
+		return fromInt(--this);
 
 	@:op(A++) function postIncrement(): UInt;
 
+	#if debug
+	@:op(A--) extern inline function postDecrement(): UInt {
+		fromInt(--this);
+		return this;
+	}
+	#else
 	@:op(A--) function postDecrement(): UInt;
-
-	@:op(A == B) function equal(v: Int): Bool;
+	#end
 
 	@:op(A == B) @:commutative
 	static function equalInt(a: UInt, b: Int): Bool;
 
-	@:op(A != B) function notEqual(v: Int): Bool;
+	@:op(A == B) function equal(v: Int): Bool;
 
 	@:op(A != B) @:commutative
 	static function notEqual(a: UInt, b: Int): Bool;
 
-	@:op(A > B) function greaterThan(v: UInt): Bool;
+	@:op(A != B) function notEqual(v: Int): Bool;
 
 	@:op(A > B) static function greaterThanInt(a: UInt, b: Int): Bool;
 
 	@:op(A > B) static function greaterThanIntReversed(a: Int, b: UInt): Bool;
 
-	@:op(A >= B) function greaterThanOrEqual(v: UInt): Bool;
+	@:op(A > B) function greaterThan(v: UInt): Bool;
 
 	@:op(A >= B) static function greaterThanOrEqualInt(a: UInt, b: Int): Bool;
 
 	@:op(A >= B) static function greaterThanOrEqualIntReversed(a: Int, b: UInt): Bool;
 
-	@:op(A < B) function lessThan(v: UInt): Bool;
+	@:op(A >= B) function greaterThanOrEqual(v: UInt): Bool;
 
 	@:op(A < B) static function lessThanInt(a: UInt, b: Int): Bool;
 
 	@:op(A < B) static function lessThanIntReversed(a: Int, b: UInt): Bool;
 
-	@:op(A <= B) function lessThanOrEqual(v: UInt): Bool;
+	@:op(A < B) function lessThan(v: UInt): Bool;
 
 	@:op(A <= B) static function lessThanOrEqualInt(a: UInt, b: Int): Bool;
 
 	@:op(A <= B) static function lessThanOrEqualIntReversed(a: Int, b: UInt): Bool;
 
-	@:op(A & B) function and(v: UInt): UInt;
+	@:op(A <= B) function lessThanOrEqual(v: UInt): Bool;
 
 	@:op(A & B) @:commutative
 	static function andInt(a: UInt, b: Int): UInt;
 
-	@:op(A | B) function or(v: UInt): UInt;
+	@:op(A & B) function and(v: UInt): UInt;
 
 	@:op(A | B) @:commutative
-	static function orInt(a: UInt, b: Int): UInt;
+	static function orInt(a: UInt, b: Int): Int;
 
-	@:op(A ^ B) function xor(v: UInt): UInt;
+	@:op(A | B) function or(v: UInt): Int;
 
 	@:op(A ^ B) @:commutative
-	static function xorInt(a: UInt, b: Int): UInt;
+	static function xorInt(a: UInt, b: Int): Int;
 
-	@:op(~A) function negate(): UInt;
+	@:op(A ^ B) function xor(v: UInt): Int;
+
+	@:op(~A) function negate(): Int;
 
 	@:op(A << B) function leftShift(shiftCount: UInt): UInt;
 
