@@ -5,18 +5,6 @@ package sinker;
 **/
 class UInts {
 	/**
-		@return `true` if `value` is not `UInt.none`.
-	**/
-	public static extern inline function isSome(value: UInt): Bool
-		return value != UInt.none;
-
-	/**
-		@return `true` if `value` is `UInt.none`.
-	**/
-	public static extern inline function isNone(value: UInt): Bool
-		return value == UInt.none;
-
-	/**
 		Divides `value` by `denominator`.
 		- On cpp, uses `cpp.NativeMath.idiv()`.
 		- Otherwise just `Std.int(value / denominator)`.

@@ -160,6 +160,18 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	public extern inline function toString(): String
 		return Std.string(this);
 
+	/**
+		@return `true` if `this` is not `UInt.none`.
+	**/
+	public extern inline function isSome(): Bool
+		return this != UInt.none.int();
+
+	/**
+		@return `true` if `this` is `UInt.none`.
+	**/
+	public extern inline function isNone(): Bool
+		return this == UInt.none.int();
+
 	@:allow(sinker)
 	extern inline function new(v: Int)
 		this = v;
