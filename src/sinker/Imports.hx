@@ -39,6 +39,12 @@ typedef Option<T> = sinker.types.Option<T>;
 typedef IntTools = sinker.tools.IntTools;
 
 /**
+	Utility for `UInt`.
+**/
+@:dox(hide)
+typedef UIntTools = sinker.tools.UIntTools;
+
+/**
 	Utility for `Array<T>`.
 **/
 @:dox(hide)
