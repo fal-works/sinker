@@ -6,7 +6,7 @@ package sinker.types;
 	- Does not check against overflow.
 **/
 @:notNull
-abstract UInt(Int) to Int {
+abstract UInt(Int) to Int from std.UInt to std.UInt {
 	/**
 		A special `UInt` value that represents the absense of valid value.
 		Internaly this is an integer value `-1`.

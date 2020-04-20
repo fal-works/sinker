@@ -7,6 +7,9 @@ import haxe.ds.Option as StdOption;
 **/
 @:notNull
 abstract Option<T>(StdOption<T>) from StdOption<T> to StdOption<T> {
+	/**
+		@return New `Some(value: T)` instance.
+	**/
 	public static extern inline function some<T>(value: T): Option<T>
 		return Some(value);
 
