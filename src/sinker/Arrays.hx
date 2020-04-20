@@ -1,6 +1,9 @@
 package sinker;
 
-class ArrayTools {
+/**
+	Utility for `Array`.
+**/
+class Arrays {
 	/**
 		@return New array with length `size`.
 	**/

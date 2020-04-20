@@ -3,7 +3,7 @@ package sinker;
 /**
 	Utility for `UInt`.
 **/
-class UIntTools {
+class UInts {
 	/**
 		@return The smaller value of `a` and `b`.
 	**/

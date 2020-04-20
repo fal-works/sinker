@@ -268,7 +268,7 @@ class ArrayExtension {
 		for (i in 0...arrayCount)
 			elementCount += arrays[u(i)].length;
 
-		final newArray = ArrayTools.allocate(elementCount);
+		final newArray = Arrays.allocate(elementCount);
 		var i = 0;
 
 		for (k in 0...arrayCount) {
@@ -354,7 +354,7 @@ class ArrayExtension {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {
-			final newArray = ArrayTools.allocate(length);
+			final newArray = Arrays.allocate(length);
 
 			newArray[0] = _this[0];
 			var writeIndex = 1;

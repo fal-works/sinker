@@ -3,7 +3,7 @@ package sinker;
 /**
 	Utility for `Int`.
 **/
-class IntTools {
+class Ints {
 	/**
 		@return The smaller value of `a` and `b`.
 	**/

@@ -287,7 +287,7 @@ class ArrayFunctionalExtension {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {
-			final newArray = ArrayTools.allocate(length);
+			final newArray = Arrays.allocate(length);
 
 			newArray[0] = _this[0];
 			var writeIndex = 1;
