@@ -1,6 +1,7 @@
 package sinker.tools;
 
-import sinker.Imports;
+import sinker.types.StrictArray;
+import sinker.types.UInt;
 
 class ArrayTools {
 	/**
@@ -29,9 +30,10 @@ class ArrayTools {
 		rangeLength: UInt
 	): Void {
 		#if debug
-		if(source == destination) throw "Failed to blit because source and destination are the same.";
-		if(sourcePosition + rangeLength > source.length) throw "Invalid values.";
-		if(destinationPosition + rangeLength > destination.length) throw "Invalid values.";
+		if (source == destination)
+			throw "Failed to blit because source and destination are the same.";
+		if (sourcePosition + rangeLength > source.length) throw "Invalid values.";
+		if (destinationPosition + rangeLength > destination.length) throw "Invalid values.";
 		#end
 
 		#if cpp
@@ -57,9 +59,10 @@ class ArrayTools {
 		rangeLength: UInt
 	): Void {
 		#if debug
-		if(source == destination) throw "Failed to blit because source and destination are the same.";
-		if(rangeLength > source.length) throw "Invalid values.";
-		if(rangeLength > destination.length) throw "Invalid values.";
+		if (source == destination)
+			throw "Failed to blit because source and destination are the same.";
+		if (rangeLength > source.length) throw "Invalid values.";
+		if (rangeLength > destination.length) throw "Invalid values.";
 		#end
 
 		#if cpp

@@ -116,6 +116,6 @@ abstract StrictArray<T>(Array<T>) from Array<T> to Array<T> {
 		return newArray;
 	}
 
-	public extern inline function resize(len:UInt):Void
+	public extern inline function resize(len: UInt): Void
 		this.resize(len.int());
 }

@@ -1,13 +1,16 @@
 package sinker.extensions;
 
 import sinker.Imports;
+
 using sinker.extensions.ArrayExtension;
 
 class ArrayNullableExtension {
 	/**
 		@return Shallow copy of `this`, or `null` if `this` is `null`.
 	**/
-	public static inline function copyNullable<T>(_this: Null<StrictArray<T>>): Null<StrictArray<T>>
+	public static inline function copyNullable<T>(
+		_this: Null<StrictArray<T>>
+	): Null<StrictArray<T>>
 		return if (_this != null) _this.copy() else null;
 
 	/**
@@ -19,9 +22,6 @@ class ArrayNullableExtension {
 		value: T,
 		defaultValue: T
 	): T {
-		return if (_this != null) _this.find(
-			value,
-			defaultValue
-		) else defaultValue;
+		return if (_this != null) _this.find(value, defaultValue) else defaultValue;
 	}
 }

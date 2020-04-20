@@ -1,7 +1,5 @@
 package sinker.tools;
 
-import sinker.types.Int;
-
 /**
 	Utility for `Int`.
 **/

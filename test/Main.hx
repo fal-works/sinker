@@ -9,18 +9,22 @@ class Main {
 	}
 
 	static function main() {
-		test((10: Int).divideBy(2) == 5);
-		test((10: Int).modulo(3) == 1);
+		test((10 : Int).divideBy(2) == 5);
+		test((10 : Int).modulo(3) == 1);
 		test(uint(3).powerOf2() == 8);
-		test((3: Int).square() == 9);
-		test((-3: Int).absolute() == 3);
+		test((3 : Int).square() == 9);
+		test((-3 : Int).absolute() == 3);
 
 		test((1.5).toInt() == 1);
 
 		test(Maybe.from(10).isSome());
 		test(Option.some(1).isSome());
 
-		final a: Array<Int> = [1, 2, 3];
+		final a: Array<Int> = [
+			1,
+			2,
+			3
+		];
 		test(a.length == 3);
 		var sum = 0;
 		a.forEach(value -> sum += value);

@@ -128,8 +128,6 @@ abstract UInt(Int) to Int {
 
 	@:op(A >>> B) function unsignedRightShift(shiftCount: UInt): UInt;
 
-	@:op(A...B) function iterate(v: Int): IntIterator;
-
 	/**
 		Casts `this` to `Int`.
 	**/

@@ -1,7 +1,8 @@
 package sinker.extensions;
 
-import sinker.extensions.ArrayFunctionalExtension.hasEqual;
 import sinker.Imports;
+
+using sinker.extensions.ArrayFunctionalExtension;
 
 class ArrayExtension {
 	/**
@@ -46,7 +47,10 @@ class ArrayExtension {
 		Fills the array with `value`.
 		@return The filled array.
 	**/
-	public static extern inline function fill<T>(_this: StrictArray<T>, value: T): StrictArray<T> {
+	public static extern inline function fill<T>(
+		_this: StrictArray<T>,
+		value: T
+	): StrictArray<T> {
 		return fillIn(_this, value, 0, _this.length);
 	}
 
@@ -60,8 +64,8 @@ class ArrayExtension {
 		rangeLength: UInt
 	): Void {
 		#if debug
-		if(sourcePosition + rangeLength > _this.length) throw "Invalid values.";
-		if(destinationPosition + rangeLength <= _this.length) throw "Invalid values.";
+		if (sourcePosition + rangeLength > _this.length) throw "Invalid values.";
+		if (destinationPosition + rangeLength <= _this.length) throw "Invalid values.";
 		#end
 
 		#if cpp
@@ -102,7 +106,12 @@ class ArrayExtension {
 	public static inline function has<T>(_this: StrictArray<T>, value: T): Bool
 		return _this.indexOf(value, 0) >= 0;
 
-	public static inline function hasIn<T>(_this: StrictArray<T>, value: T, start: UInt, end: UInt): Bool {
+	public static inline function hasIn<T>(
+		_this: StrictArray<T>,
+		value: T,
+		start: UInt,
+		end: UInt
+	): Bool {
 		var found = false;
 
 		for (i in start...end) {
@@ -118,7 +127,10 @@ class ArrayExtension {
 	/**
 		@return `true` if the array is not null and contains an element that is `element == value`.
 	**/
-	public static inline function existsAndHas<T>(_this: Null<StrictArray<T>>, value: T): Bool
+	public static inline function existsAndHas<T>(
+		_this: Null<StrictArray<T>>,
+		value: T
+	): Bool
 		return _this != null && has(_this, value);
 
 	/**
@@ -142,8 +154,8 @@ class ArrayExtension {
 		indexB: UInt
 	): Void {
 		#if debug
-		if(indexA >= _this.length) throw "Invalid value.";
-		if(indexB >= _this.length) throw "Invalid value.";
+		if (indexA >= _this.length) throw "Invalid value.";
+		if (indexB >= _this.length) throw "Invalid value.";
 		#end
 
 		var tmp = _this[indexA];
@@ -155,7 +167,10 @@ class ArrayExtension {
 		Compares elements of two arrays with `==` operator.
 		@return `true` if all elements are equal (including the order).
 	**/
-	public static inline function equals<T>(_this: StrictArray<T>, other: StrictArray<T>): Bool {
+	public static inline function equals<T>(
+		_this: StrictArray<T>,
+		other: StrictArray<T>
+	): Bool {
 		final len = _this.length;
 
 		return if (other.length != len) false; else {
@@ -244,7 +259,9 @@ class ArrayExtension {
 		Concatenates all arrays.
 		@return New array.
 	**/
-	public static inline function flatten<T>(arrays: StrictArray<StrictArray<T>>): StrictArray<T> {
+	public static inline function flatten<T>(
+		arrays: StrictArray<StrictArray<T>>
+	): StrictArray<T> {
 		final arrayCount = arrays.length;
 		var elementCount = 0;
 
@@ -288,7 +305,7 @@ class ArrayExtension {
 		value: T,
 		equalityPredicate: (a: T, b: T) -> Bool
 	): Bool {
-		if (hasEqual(_this, value, equalityPredicate)) return false;
+		if (_this.hasEqual(value, equalityPredicate)) return false;
 
 		_this.push(value);
 		return true;
@@ -331,7 +348,9 @@ class ArrayExtension {
 		O(n^2) complexity (which is not very good).
 		@return New array with deduplicated values from `this`.
 	**/
-	public static inline function copyDeduplicated<T>(_this: StrictArray<T>): StrictArray<T> {
+	public static inline function copyDeduplicated<T>(
+		_this: StrictArray<T>
+	): StrictArray<T> {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {

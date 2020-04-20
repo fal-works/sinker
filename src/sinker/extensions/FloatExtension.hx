@@ -1,7 +1,5 @@
 package sinker.extensions;
 
-import sinker.types.Int;
-
 class FloatExtension {
 	/**
 		Casts `this` to `Int`.

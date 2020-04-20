@@ -12,7 +12,10 @@ class ArrayFunctionalExtension {
 	/**
 		Runs a given function for each element.
 	**/
-	public static inline function forEach<T>(_this: StrictArray<T>, callback: T->Void): Void {
+	public static inline function forEach<T>(
+		_this: StrictArray<T>,
+		callback: T->Void
+	): Void {
 		final len = _this.length;
 		var i = UInt.zero;
 		while (i < len) {
@@ -65,7 +68,10 @@ class ArrayFunctionalExtension {
 		@param predicate Function that returns `true` if a given element meets the condition.
 		@return `true` if found.
 	**/
-	public static inline function hasAny<T>(_this: StrictArray<T>, predicate: T->Bool): Bool {
+	public static inline function hasAny<T>(
+		_this: StrictArray<T>,
+		predicate: T->Bool
+	): Bool {
 		final len = _this.length;
 		var found = false;
 		var i = UInt.zero;
@@ -201,10 +207,7 @@ class ArrayFunctionalExtension {
 			++i;
 		}
 
-		return if (foundIndex >= 0)
-			_this.removeAt(foundIndex)
-		else
-			defaultValue;
+		return if (foundIndex >= 0) _this.removeAt(foundIndex) else defaultValue;
 	}
 
 	/**
