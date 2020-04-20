@@ -7,7 +7,7 @@ class ArrayExtension {
 	/**
 		@return The last element of the array.
 	**/
-	public static extern inline function peekSafe<T>(_this: Array<T>): Maybe<T> {
+	public static extern inline function peekSafe<T>(_this: StrictArray<T>): Maybe<T> {
 		final len = _this.length;
 		return if (len > 0) Maybe.from(_this[len - 1]) else Maybe.none();
 	}
@@ -15,7 +15,7 @@ class ArrayExtension {
 	/**
 		@return The last element of the array.
 	**/
-	public static extern inline function peek<T>(_this: Array<T>): T {
+	public static extern inline function peek<T>(_this: StrictArray<T>): T {
 		return _this[_this.length - 1];
 	}
 
@@ -24,11 +24,11 @@ class ArrayExtension {
 		@return The filled array.
 	**/
 	public static inline function fillIn<T>(
-		_this: Array<T>,
+		_this: StrictArray<T>,
 		value: T,
 		startIndex: UInt,
 		endIndex: UInt
-	): Array<T> {
+	): StrictArray<T> {
 		#if debug
 		if (endIndex > _this.length) throw "Invalid value.";
 		#end
@@ -46,15 +46,15 @@ class ArrayExtension {
 		Fills the array with `value`.
 		@return The filled array.
 	**/
-	public static extern inline function fill<T>(_this: Array<T>, value: T): Array<T> {
-		return fillIn(_this, value, UInt.zero, _this.length);
+	public static extern inline function fill<T>(_this: StrictArray<T>, value: T): StrictArray<T> {
+		return fillIn(_this, value, 0, _this.length);
 	}
 
 	/**
 		Copies elements from source to destination position within a same array.
 	**/
 	public static inline function blitInternal<T>(
-		_this: Array<T>,
+		_this: StrictArray<T>,
 		sourcePosition: UInt,
 		destinationPosition: UInt,
 		rangeLength: UInt
@@ -99,10 +99,10 @@ class ArrayExtension {
 	/**
 		@return `true` if the array contains an element that is `element == value`.
 	**/
-	public static inline function has<T>(_this: Array<T>, value: T): Bool
+	public static inline function has<T>(_this: StrictArray<T>, value: T): Bool
 		return _this.indexOf(value, 0) >= 0;
 
-	public static inline function hasIn<T>(_this: Array<T>, value: T, start: UInt, end: UInt): Bool {
+	public static inline function hasIn<T>(_this: StrictArray<T>, value: T, start: UInt, end: UInt): Bool {
 		var found = false;
 
 		for (i in start...end) {
@@ -118,14 +118,14 @@ class ArrayExtension {
 	/**
 		@return `true` if the array is not null and contains an element that is `element == value`.
 	**/
-	public static inline function existsAndHas<T>(_this: Null<Array<T>>, value: T): Bool
+	public static inline function existsAndHas<T>(_this: Null<StrictArray<T>>, value: T): Bool
 		return _this != null && has(_this, value);
 
 	/**
 		@return The first found element that is `element == value`.
 	**/
 	public static inline function find<T>(
-		_this: Array<T>,
+		_this: StrictArray<T>,
 		value: T,
 		defaultValue: T
 	): T {
@@ -134,26 +134,10 @@ class ArrayExtension {
 	}
 
 	/**
-		@return The first found element that is `element == value`.
-		`defaultValue` if this array is `null` or the element is not found.
-	**/
-	public static inline function findIfNotNull<T>(
-		_this: Null<Array<T>>,
-		value: T,
-		defaultValue: T
-	): T {
-		return if (_this != null) find(
-			_this,
-			value,
-			defaultValue
-		) else defaultValue;
-	}
-
-	/**
 		Swaps elements at `indexA` and `indexB`.
 	**/
 	public static inline function swap<T>(
-		_this: Array<T>,
+		_this: StrictArray<T>,
 		indexA: UInt,
 		indexB: UInt
 	): Void {
@@ -171,13 +155,13 @@ class ArrayExtension {
 		Compares elements of two arrays with `==` operator.
 		@return `true` if all elements are equal (including the order).
 	**/
-	public static inline function equals<T>(_this: Array<T>, other: Array<T>): Bool {
+	public static inline function equals<T>(_this: StrictArray<T>, other: StrictArray<T>): Bool {
 		final len = _this.length;
 
 		return if (other.length != len) false; else {
 			var equal = true;
 
-			var i = UInt.zero;
+			var i = 0;
 			while (i < len) {
 				if (_this[i] == other[i]) {
 					++i;
@@ -197,8 +181,8 @@ class ArrayExtension {
 		@return `true` if all elements are equal (including the order).
 	**/
 	public static inline function compare<T>(
-		_this: Array<T>,
-		other: Array<T>,
+		_this: StrictArray<T>,
+		other: StrictArray<T>,
 		comparator: (a: T, b: T) -> Bool
 	): Bool {
 		final len = _this.length;
@@ -206,7 +190,7 @@ class ArrayExtension {
 		return if (other.length != len) false; else {
 			var foundDifference = false;
 
-			var i = UInt.zero;
+			var i = 0;
 			while (i < len) {
 				if (comparator(_this[i], other[i])) {
 					++i;
@@ -225,11 +209,11 @@ class ArrayExtension {
 		Pushes all elements in `other` to `this` array.
 	**/
 	public static inline function pushFromArray<T>(
-		_this: Array<T>,
-		other: Array<T>
+		_this: StrictArray<T>,
+		other: StrictArray<T>
 	): Void {
 		var writeIndex = _this.length;
-		var readIndex = UInt.zero;
+		var readIndex = 0;
 
 		final otherLength = other.length;
 		_this.resize(writeIndex + otherLength);
@@ -245,7 +229,7 @@ class ArrayExtension {
 		Removes an element at `index.
 		@return Removed element.
 	**/
-	public static inline function removeAt<T>(_this: Array<T>, index: UInt): T {
+	public static inline function removeAt<T>(_this: StrictArray<T>, index: UInt): T {
 		final arrayLength = _this.length;
 		final rangeLength = arrayLength - index - 1;
 		final removed = _this[index];
@@ -260,20 +244,20 @@ class ArrayExtension {
 		Concatenates all arrays.
 		@return New array.
 	**/
-	public static inline function flatten<T>(arrays: Array<Array<T>>): Array<T> {
+	public static inline function flatten<T>(arrays: StrictArray<StrictArray<T>>): StrictArray<T> {
 		final arrayCount = arrays.length;
-		var elementCount = UInt.zero;
+		var elementCount = 0;
 
-		for (i in 0...arrayCount.std())
+		for (i in 0...arrayCount)
 			elementCount += arrays[u(i)].length;
 
-		final newArray = new Array(elementCount);
-		var i = UInt.zero;
+		final newArray = ArrayTools.allocate(elementCount);
+		var i = 0;
 
-		for (k in 0...arrayCount.std()) {
+		for (k in 0...arrayCount) {
 			final array = arrays[u(k)];
 
-			for (m in 0...array.length.std()) {
+			for (m in 0...array.length) {
 				newArray[i] = array[u(m)];
 				++i;
 			}
@@ -286,7 +270,7 @@ class ArrayExtension {
 		Pushes `value` to `this` only if `this` does not have any element equal to `value`.
 		@return `true` if pushed.
 	**/
-	public static inline function pushIfAbsent<T>(_this: Array<T>, value: T): Bool {
+	public static inline function pushIfAbsent<T>(_this: StrictArray<T>, value: T): Bool {
 		if (has(_this, value)) return false;
 
 		_this.push(value);
@@ -300,7 +284,7 @@ class ArrayExtension {
 		@return `true` if pushed.
 	**/
 	public static inline function pushIfNotFound<T>(
-		_this: Array<T>,
+		_this: StrictArray<T>,
 		value: T,
 		equalityPredicate: (a: T, b: T) -> Bool
 	): Bool {
@@ -317,16 +301,16 @@ class ArrayExtension {
 		@param equalityPredicate Function that returns `true` if two given elements
 			should be considered as equal.
 	**/
-	public static inline function deduplicate<T>(_this: Array<T>): Void {
+	public static inline function deduplicate<T>(_this: StrictArray<T>): Void {
 		final length = _this.length;
 
 		if (length > 0) {
-			var writeIndex = UInt.one;
+			var writeIndex = 1;
 
-			for (readIndex in 1...length.std()) {
+			for (readIndex in 1...length) {
 				final value = _this[u(readIndex)];
 				var found = false;
-				for (k in 0...writeIndex.std()) {
+				for (k in 0...writeIndex) {
 					if (_this[u(k)] != value) continue;
 					found = true;
 					break;
@@ -347,18 +331,18 @@ class ArrayExtension {
 		O(n^2) complexity (which is not very good).
 		@return New array with deduplicated values from `this`.
 	**/
-	public static inline function copyDeduplicated<T>(_this: Array<T>): Array<T> {
+	public static inline function copyDeduplicated<T>(_this: StrictArray<T>): StrictArray<T> {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {
-			final newArray = new Array(length);
+			final newArray = ArrayTools.allocate(length);
 
-			newArray[UInt.zero] = _this[UInt.zero];
-			var writeIndex = UInt.one;
+			newArray[0] = _this[0];
+			var writeIndex = 1;
 
-			for (readIndex in 1...length.std()) {
+			for (readIndex in 1...length) {
 				final value = _this[u(readIndex)];
-				if (hasIn(newArray, value, UInt.zero, writeIndex)) continue;
+				if (hasIn(newArray, value, 0, writeIndex)) continue;
 
 				newArray[writeIndex] = value;
 				++writeIndex;
@@ -369,6 +353,6 @@ class ArrayExtension {
 		}
 	}
 
-	static extern inline function u(v: StdTypes.Int): UInt
+	static extern inline function u(v: Int): UInt
 		return new UInt(v);
 }

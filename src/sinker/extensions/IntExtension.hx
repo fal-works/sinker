@@ -1,6 +1,5 @@
 package sinker.extensions;
 
-import sinker.types.Int;
 import sinker.types.UInt;
 
 class IntExtension {
@@ -26,7 +25,7 @@ class IntExtension {
 		#if cpp
 		return cpp.NativeMath.imod(_this, denominator);
 		#else
-		return _this.std() % denominator.std();
+		return _this % denominator;
 		#end
 	}
 

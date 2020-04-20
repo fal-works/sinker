@@ -1,14 +1,11 @@
 package sinker.types;
 
-import sinker.types.Int;
-
 /**
 	Unsigned integer based on `Int`.
 	- `#if debug` checks against negative when casting from `Int`.
 	- Does not check against overflow.
 **/
 @:notNull
-@:forward(float)
 abstract UInt(Int) to Int {
 	/**
 		A special `UInt` value that represents the absense of valid value.
@@ -42,7 +39,7 @@ abstract UInt(Int) to Int {
 		Casts `Int` to `UInt`.
 		`#if debug` throws error if negative.
 	**/
-	public static extern inline function fromInt(v: Int): UInt {
+	@:from public static extern inline function fromInt(v: Int): UInt {
 		#if debug
 		if (v < 0) throw 'Failed to cast value to UInt: $v';
 		#end
@@ -72,35 +69,54 @@ abstract UInt(Int) to Int {
 
 	@:op(A--) function postDecrement(): UInt;
 
-	@:op(A == B) function equal(v: UInt): Bool;
+	@:op(A == B) function equal(v: Int): Bool;
 
-	@:op(A == B) function equalInt(v: Int): Bool;
+	@:op(A == B) @:commutative
+	static function equalInt(a: UInt, b: Int): Bool;
 
-	@:op(A != B) function notEqual(v: UInt): Bool;
+	@:op(A != B) function notEqual(v: Int): Bool;
 
-	@:op(A != B) function notEqualInt(v: Int): Bool;
+	@:op(A != B) @:commutative
+	static function notEqual(a: UInt, b: Int): Bool;
 
 	@:op(A > B) function greaterThan(v: UInt): Bool;
 
-	@:op(A > B) function greaterThanInt(v: Int): Bool;
+	@:op(A > B) static function greaterThanInt(a: UInt, b: Int): Bool;
+
+	@:op(A > B) static function greaterThanIntReversed(a: Int, b: UInt): Bool;
 
 	@:op(A >= B) function greaterThanOrEqual(v: UInt): Bool;
 
-	@:op(A >= B) function greaterThanOrEqualInt(v: Int): Bool;
+	@:op(A >= B) static function greaterThanOrEqualInt(a: UInt, b: Int): Bool;
+
+	@:op(A >= B) static function greaterThanOrEqualIntReversed(a: Int, b: UInt): Bool;
 
 	@:op(A < B) function lessThan(v: UInt): Bool;
 
-	@:op(A < B) function lessThanInt(v: Int): Bool;
+	@:op(A < B) static function lessThanInt(a: UInt, b: Int): Bool;
+
+	@:op(A < B) static function lessThanIntReversed(a: Int, b: UInt): Bool;
 
 	@:op(A <= B) function lessThanOrEqual(v: UInt): Bool;
 
-	@:op(A <= B) function lessThanOrEqualInt(v: Int): Bool;
+	@:op(A <= B) static function lessThanOrEqualInt(a: UInt, b: Int): Bool;
+
+	@:op(A <= B) static function lessThanOrEqualIntReversed(a: Int, b: UInt): Bool;
 
 	@:op(A & B) function and(v: UInt): UInt;
 
+	@:op(A & B) @:commutative
+	static function andInt(a: UInt, b: Int): UInt;
+
 	@:op(A | B) function or(v: UInt): UInt;
 
+	@:op(A | B) @:commutative
+	static function orInt(a: UInt, b: Int): UInt;
+
 	@:op(A ^ B) function xor(v: UInt): UInt;
+
+	@:op(A ^ B) @:commutative
+	static function xorInt(a: UInt, b: Int): UInt;
 
 	@:op(~A) function negate(): UInt;
 
@@ -115,12 +131,6 @@ abstract UInt(Int) to Int {
 	@:op(A...B) function iterate(v: Int): IntIterator;
 
 	/**
-		Casts `this` to standard `Int`.
-	**/
-	public extern inline function std(): StdTypes.Int
-		return this.std();
-
-	/**
 		Casts `this` to `Int`.
 	**/
 	public extern inline function int(): Int
@@ -130,13 +140,13 @@ abstract UInt(Int) to Int {
 		Casts `this` to `Float`.
 	**/
 	public extern inline function float(): Float
-		return this.std();
+		return this;
 
 	/**
 		Casts `this` to `String`.
 	**/
 	public extern inline function toString(): String
-		return this.toString();
+		return Std.string(this);
 
 	@:allow(sinker)
 	extern inline function new(v: Int)

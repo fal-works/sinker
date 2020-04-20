@@ -36,7 +36,7 @@ class UIntExtension {
 		- Otherwise just `this % denominator`.
 	**/
 	public static extern inline function modulo(_this: UInt, denominator: UInt): UInt {
-		return new UInt(_this.modulo(denominator));
+		return new UInt(_this.int().modulo(denominator));
 	}
 
 	/**
@@ -50,6 +50,6 @@ class UIntExtension {
 		@return `pow(2, this)`.
 	**/
 	public static extern inline function powerOf2(_this: UInt): UInt {
-		return new UInt(1 << _this.std());
+		return new UInt(1 << _this);
 	}
 }

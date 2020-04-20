@@ -16,15 +16,9 @@ class Globals {
 	}
 
 	/**
-		Explicitly casts `StdTypes.Int` to `sinker.types.Int`.
-	**/
-	public static extern inline function int(value: StdTypes.Int): Int
-		return value;
-
-	/**
 		Casts `Int` to `UInt`.
 		`#if debug` throws error if negative.
 	**/
-	public static extern inline function uint(value: StdTypes.Int): UInt
+	public static extern inline function uint(value: Int): UInt
 		return UInt.fromInt(value);
 }

@@ -1,12 +1,13 @@
 package sinker.types;
 
-import Array as StdArray;
-import sinker.types.Int;
 import sinker.types.UInt;
 import sinker.tools.ArrayTools;
 
 /**
 	Wrapper of standard `Array`.
+	- Uses `sinker.types.UInt` for indices.
+	- Uses `unsafeGet()`/`unsafeSet()` on cpp target.
+	- Does boundary check `#if debug`.
 **/
 @:forward(
 	join,
@@ -20,7 +21,7 @@ import sinker.tools.ArrayTools;
 	remove,
 	iterator
 )
-abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
+abstract StrictArray<T>(Array<T>) from Array<T> to Array<T> {
 	public var length(get, never): UInt;
 
 	extern inline function get_length(): UInt {
@@ -28,22 +29,15 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	}
 
 	/**
-		@return New array with length `size`.
+		@return New array with zero length.
 	**/
-	public extern inline function new<T>(size: UInt) {
-		#if cpp
-		this = cpp.NativeArray.create(size);
-		#else
-		final newArray: Array<T> = [];
-		newArray.resize(size);
-		this = newArray;
-		#end
-	}
+	public extern inline function new()
+		this = [];
 
 	/**
 		Casts `this` to standard `Array`.
 	**/
-	public extern inline function std(): StdArray<T>
+	public extern inline function std(): Array<T>
 		return this;
 
 	@:op([]) extern inline function get(index: UInt): T {
@@ -52,9 +46,9 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 		#end
 
 		#if cpp
-		return cpp.NativeArray.unsafeGet(this, index.std());
+		return cpp.NativeArray.unsafeGet(this, index.int());
 		#else
-		return this[index.std()];
+		return this[index.int()];
 		#end
 	}
 
@@ -64,9 +58,9 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 		#end
 
 		#if cpp
-		return cpp.NativeArray.unsafeSet(this, index.std(), value);
+		return cpp.NativeArray.unsafeSet(this, index.int(), value);
 		#else
-		return this[index.std()] = value;
+		return this[index.int()] = value;
 		#end
 	}
 
@@ -78,17 +72,17 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	}
 
 	public extern inline function slice(position: Int, ?end: Int): Array<T>
-		return this.slice(position.std(), cast end);
+		return this.slice(position, cast end);
 
 	public extern inline function splice(position: Int, length: Int): Array<T>
-		return this.splice(position.std(), length.std());
+		return this.splice(position, length);
 
 	public extern inline function indexOf(value: T, fromIndex: Int): UInt {
-		return new UInt(this.indexOf(value, fromIndex.std()));
+		return new UInt(this.indexOf(value, fromIndex));
 	}
 
 	public extern inline function lastIndexOf(value: T, fromIndex: Int): UInt {
-		return new UInt(this.lastIndexOf(value, fromIndex.std()));
+		return new UInt(this.lastIndexOf(value, fromIndex));
 	}
 
 	public extern inline function copy(): Array<T>
@@ -99,7 +93,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 		return this.map(f);
 		#else
 		final len = length;
-		final newArray: Array<S> = new Array(len);
+		final newArray: Array<S> = ArrayTools.allocate(len);
 		var i = new UInt(0);
 		while (i < len) {
 			newArray[i] = callback(get(i));
@@ -123,5 +117,5 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	}
 
 	public extern inline function resize(len:UInt):Void
-		this.resize(len.std());
+		this.resize(len.int());
 }

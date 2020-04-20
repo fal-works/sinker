@@ -8,7 +8,7 @@ class FloatExtension {
 		- On cpp, uses `cpp.NativeMath.fastInt()`.
 		- Otherwise just `Std.int(this)`.
 	**/
-	extern public static inline function toInt(_this: Float): Int {
+	public static extern inline function toInt(_this: Float): Int {
 		#if cpp
 		return cpp.NativeMath.fastInt(_this);
 		#else

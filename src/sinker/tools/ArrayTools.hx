@@ -4,14 +4,27 @@ import sinker.Imports;
 
 class ArrayTools {
 	/**
+		@return New array with length `size`.
+	**/
+	public static extern inline function allocate<T>(size: UInt): StrictArray<T> {
+		#if cpp
+		return cpp.NativeArray.create(size);
+		#else
+		final newArray: StrictArray<T> = [];
+		newArray.resize(size);
+		return newArray;
+		#end
+	}
+
+	/**
 		Copies elements from `source` to `destination`.
 
 		If `source` and `destination` are the same, use `blitInternal()` instead.
 	**/
 	public inline static function blit<T>(
-		source: Array<T>,
+		source: StrictArray<T>,
 		sourcePosition: UInt,
-		destination: Array<T>,
+		destination: StrictArray<T>,
 		destinationPosition: UInt,
 		rangeLength: UInt
 	): Void {
@@ -39,8 +52,8 @@ class ArrayTools {
 		Copies elements from source to destination beginning at index zero.
 	**/
 	public static inline function blitZero<T>(
-		source: Array<T>,
-		destination: Array<T>,
+		source: StrictArray<T>,
+		destination: StrictArray<T>,
 		rangeLength: UInt
 	): Void {
 		#if debug

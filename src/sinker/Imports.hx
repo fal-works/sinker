@@ -1,12 +1,6 @@
 package sinker;
 
 /**
-	Integer based on the standard `Int` with some additional methods.
-**/
-@:dox(hide)
-typedef Int = sinker.types.Int;
-
-/**
 	Unsigned integer based on `Int`.
 	- `#if debug` checks against negative when casting from `Int`.
 	- Does not check against overflow.
@@ -14,8 +8,14 @@ typedef Int = sinker.types.Int;
 @:dox(hide)
 typedef UInt = sinker.types.UInt;
 
+/**
+	Wrapper of standard `Array`.
+	- Uses `sinker.types.UInt` for indices.
+	- Uses `unsafeGet()`/`unsafeSet()` on cpp target.
+	- Does boundary check `#if debug`.
+**/
 @:dox(hide)
-typedef Array<T> = sinker.types.Array<T>;
+typedef StrictArray<T> = sinker.types.StrictArray<T>;
 
 /**
 	Wrapper of `Null<T>` for:
@@ -37,3 +37,9 @@ typedef Option<T> = sinker.types.Option<T>;
 **/
 @:dox(hide)
 typedef IntTools = sinker.tools.IntTools;
+
+/**
+	Utility for `Array<T>`.
+**/
+@:dox(hide)
+typedef ArrayTools = sinker.tools.ArrayTools;

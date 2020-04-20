@@ -5,7 +5,7 @@ using sinker.Usings;
 
 class Main {
 	static function test(shouldBeTrue: Bool): Void {
-		if (!shouldBeTrue) throw "Failed.";
+		if (!shouldBeTrue) throw "Test failed.";
 	}
 
 	static function main() {
@@ -20,8 +20,11 @@ class Main {
 		test(Maybe.from(10).isSome());
 		test(Option.some(1).isSome());
 
-		final a: Array<Int> = [1];
-		test(a.length == 1);
+		final a: Array<Int> = [1, 2, 3];
+		test(a.length == 3);
+		var sum = 0;
+		a.forEach(value -> sum += value);
+		test(sum == 6);
 
 		trace('Passed all cases.');
 	}
