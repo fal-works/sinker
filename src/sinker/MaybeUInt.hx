@@ -34,7 +34,7 @@ abstract MaybeUInt(UInt) from UInt {
 		@return The value of `this`. Throws error if `this.isNone()`.
 	**/
 	public extern inline function unwrap(): UInt {
-		#if debug
+		#if sinker_debug
 		if (isNone()) throw "Failed to unwrap. The value is not a valid UInt.";
 		#end
 		return this;

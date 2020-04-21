@@ -7,4 +7,4 @@
 --macro nullSafety("sinker", Strict)
 -main Main
 
---debug
+-D sinker_debug

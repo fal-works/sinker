@@ -2,7 +2,7 @@ package sinker;
 
 /**
 	Unsigned integer based on `Int`.
-	- `#if debug` checks against negative when casting from `Int`.
+	- `#if sinker_debug` checks against negative when casting from `Int`.
 	- Does not check against overflow.
 **/
 @:notNull
@@ -19,10 +19,10 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 
 	/**
 		Casts `Int` to `UInt`.
-		`#if debug` throws error if negative.
+		`#if sinker_debug` throws error if negative.
 	**/
 	@:from public static extern inline function fromInt(v: Int): UInt {
-		#if debug
+		#if sinker_debug
 		if (v < 0) throw 'Failed to cast value to UInt: $v';
 		#end
 		return new UInt(v);
@@ -50,7 +50,7 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 
 	@:op(A++) function postIncrement(): UInt;
 
-	#if debug
+	#if sinker_debug
 	@:op(A--) extern inline function postDecrement(): UInt {
 		fromInt(--this);
 		return this;

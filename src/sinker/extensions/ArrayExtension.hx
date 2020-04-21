@@ -31,7 +31,7 @@ class ArrayExtension {
 		startIndex: UInt,
 		endIndex: UInt
 	): Array<T> {
-		#if debug
+		#if sinker_debug
 		if (endIndex > _this.length) throw "Invalid value.";
 		#end
 
@@ -64,7 +64,7 @@ class ArrayExtension {
 		destinationPosition: UInt,
 		rangeLength: UInt
 	): Void {
-		#if debug
+		#if sinker_debug
 		if (sourcePosition + rangeLength > _this.length) throw "Invalid values.";
 		if (destinationPosition + rangeLength > _this.length) throw "Invalid values.";
 		#end
@@ -154,7 +154,7 @@ class ArrayExtension {
 		indexA: UInt,
 		indexB: UInt
 	): Void {
-		#if debug
+		#if sinker_debug
 		if (indexA >= _this.length) throw "Invalid value.";
 		if (indexB >= _this.length) throw "Invalid value.";
 		#end

@@ -6,7 +6,7 @@ import Array as StdArray;
 	Wrapper of standard `Array`.
 	- Uses `sinker.UInt` for length and indices.
 	- Uses `unsafeGet()`/`unsafeSet()` on cpp target.
-	- Does boundary check `#if debug`.
+	- Does boundary check `#if sinker_debug`.
 **/
 @:forward(
 	join,
@@ -40,7 +40,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 		return this;
 
 	@:op([]) extern inline function get(index: UInt): T {
-		#if debug
+		#if sinker_debug
 		if (index >= length) throw "Out of bound.";
 		#end
 
@@ -52,7 +52,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	}
 
 	@:op([]) extern inline function set(index: UInt, value: T): T {
-		#if debug
+		#if sinker_debug
 		if (index >= length) throw "Out of bound.";
 		#end
 

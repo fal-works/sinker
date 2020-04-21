@@ -7,6 +7,6 @@ Haxe utility library for basic types.
 
 ## Compilation flags
 
-flag|description|
+|flag|description|
 |---|---|
-|||
+|sinker_debug|Enables bound checks for `UInt` values and `Array` indices.|

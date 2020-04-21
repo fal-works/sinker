@@ -29,7 +29,7 @@ class Arrays {
 		destinationPosition: UInt,
 		rangeLength: UInt
 	): Void {
-		#if debug
+		#if sinker_debug
 		if (source == destination)
 			throw "Failed to blit because source and destination are the same.";
 		if (sourcePosition + rangeLength > source.length) throw "Invalid values.";
@@ -58,7 +58,7 @@ class Arrays {
 		destination: Array<T>,
 		rangeLength: UInt
 	): Void {
-		#if debug
+		#if sinker_debug
 		if (source == destination)
 			throw "Failed to blit because source and destination are the same.";
 		if (rangeLength > source.length) throw "Invalid values.";
