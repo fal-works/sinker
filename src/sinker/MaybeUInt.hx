@@ -49,12 +49,6 @@ abstract MaybeUInt(UInt) from UInt {
 		return this.int();
 
 	/**
-		@return The value of `this` without checking.
-	**/
-	public extern inline function unwrapUnsafe(): UInt
-		return this;
-
-	/**
 		@return `this` if it is not `MaybeUInt.none`, otherwise `defaultValue`.
 	**/
 	public extern inline function or(defaultValue: UInt): UInt

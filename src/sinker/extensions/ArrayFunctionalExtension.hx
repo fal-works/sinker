@@ -207,7 +207,7 @@ class ArrayFunctionalExtension {
 			++i;
 		}
 
-		return if (foundIndex.isSome()) _this.removeAt(foundIndex.unwrapUnsafe()) else defaultValue;
+		return if (foundIndex.isSome()) _this.removeAt(foundIndex.unwrap()) else defaultValue;
 	}
 
 	/**
