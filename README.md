@@ -1,8 +1,16 @@
 # sinker
 
-Haxe utility library for basic types.
+Core utility library for Haxe.
 
 **Requires Haxe 4** (developed with v4.0.5).
+
+
+## Caveats
+
+- Basically platform-independent, however the main target is HashLink.
+- Not yet very well tested.
+- Quite unstable!
+
 
 ## Usage
 
@@ -17,6 +25,7 @@ using sinker.extensions.Index;
 
 Note that some standard types (such as `Array`, `UInt`) will be shadowed with sinker types, which are not completely compatible (however you can still cast to the original types with casting methods).
 
+
 ## Types
 
 ### UInt
@@ -30,17 +39,18 @@ Represents either an `UInt` value or the absense of valid value.
 
 ### Array<T>
 
-Wrapper of standard `Array<T>` with several additional methods.  
+Abstract over standard `Array<T>` with several additional methods.  
 Uses `UInt` as length/indices.  
-`#if sinker_debug` does boundary checks when accessing any element.
+`#if sinker_debug` does boundary checks when accessing elements.
 
 ### Maybe<T>
 
-Wrapper of standard `Null<T>` with stricter type cast control and some additional methods.
+Abstract over standard `Null<T>` with stricter type cast control and some additional methods.
 
 ### Option<T>
 
-Wrapper of standard `haxe.ds.Option<T>` with some additional methods.
+Abstract over standard `haxe.ds.Option<T>` with some additional methods.
+
 
 ## Utility classes
 
