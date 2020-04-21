@@ -48,10 +48,7 @@ class ArrayExtension {
 		Fills the array with `value`.
 		@return The filled array.
 	**/
-	public static extern inline function fill<T>(
-		_this: Array<T>,
-		value: T
-	): Array<T> {
+	public static extern inline function fill<T>(_this: Array<T>, value: T): Array<T> {
 		return fillIn(_this, value, 0, _this.length);
 	}
 
@@ -128,10 +125,7 @@ class ArrayExtension {
 	/**
 		@return `true` if the array is not null and contains an element that is `element == value`.
 	**/
-	public static inline function existsAndHas<T>(
-		_this: Null<Array<T>>,
-		value: T
-	): Bool
+	public static inline function existsAndHas<T>(_this: Null<Array<T>>, value: T): Bool
 		return _this != null && has(_this, value);
 
 	/**
@@ -168,10 +162,7 @@ class ArrayExtension {
 		Compares elements of two arrays with `==` operator.
 		@return `true` if all elements are equal (including the order).
 	**/
-	public static inline function equals<T>(
-		_this: Array<T>,
-		other: Array<T>
-	): Bool {
+	public static inline function equals<T>(_this: Array<T>, other: Array<T>): Bool {
 		final len = _this.length;
 
 		return if (other.length != len) false; else {
@@ -260,9 +251,7 @@ class ArrayExtension {
 		Concatenates all arrays.
 		@return New array.
 	**/
-	public static inline function flatten<T>(
-		arrays: Array<Array<T>>
-	): Array<T> {
+	public static inline function flatten<T>(arrays: Array<Array<T>>): Array<T> {
 		final arrayCount = arrays.length;
 		var elementCount = 0;
 
@@ -349,9 +338,7 @@ class ArrayExtension {
 		O(n^2) complexity (which is not very good).
 		@return New array with deduplicated values from `this`.
 	**/
-	public static inline function copyDeduplicated<T>(
-		_this: Array<T>
-	): Array<T> {
+	public static inline function copyDeduplicated<T>(_this: Array<T>): Array<T> {
 		final length = _this.length;
 
 		return if (length == 0) _this.copy() else {

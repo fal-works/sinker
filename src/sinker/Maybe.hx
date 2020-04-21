@@ -88,7 +88,9 @@ abstract Maybe<T>(Null<T>) {
 		Casts `this` to a non-null type.
 	**/
 	public extern inline function unwrap(): T {
-		#if sinker_debug if (this == null) throw "Failed to unwrap. Value is null."; #end
+		#if sinker_debug
+		if (this == null) throw "Failed to unwrap. Value is null.";
+		#end
 		@:nullSafety(Off) return this;
 	}
 
