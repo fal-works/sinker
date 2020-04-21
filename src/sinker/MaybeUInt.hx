@@ -41,6 +41,14 @@ abstract MaybeUInt(UInt) from UInt {
 	}
 
 	/**
+		Casts `this` to `Int`.
+
+		`MaybeUInt.none.int()` returns `-1`.
+	**/
+	public extern inline function int(): Int
+		return this.int();
+
+	/**
 		@return The value of `this` without checking.
 	**/
 	public extern inline function unwrapUnsafe(): UInt
