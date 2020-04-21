@@ -10,20 +10,12 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	/**
 		Value `0` in `UInt` representation.
 	**/
-	public static var zero(get, never): UInt;
-
-	static extern inline function get_zero() {
-		return new UInt(0);
-	}
+	public static extern inline final zero: UInt = 0;
 
 	/**
 		Value `1` in `UInt` representation.
 	**/
-	public static var one(get, never): UInt;
-
-	static extern inline function get_one() {
-		return new UInt(1);
-	}
+	public static extern inline final one: UInt = 1;
 
 	/**
 		Casts `Int` to `UInt`.
