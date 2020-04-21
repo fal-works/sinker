@@ -66,7 +66,7 @@ class ArrayExtension {
 	): Void {
 		#if debug
 		if (sourcePosition + rangeLength > _this.length) throw "Invalid values.";
-		if (destinationPosition + rangeLength <= _this.length) throw "Invalid values.";
+		if (destinationPosition + rangeLength > _this.length) throw "Invalid values.";
 		#end
 
 		#if cpp
