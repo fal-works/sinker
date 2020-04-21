@@ -174,6 +174,10 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 		return new UInt(this - 1);
 	}
 
+	/**
+		Returns an `UInt` value.
+		Unlike `UInt.fromInt()`, `new()` does not check against negative.
+	**/
 	@:allow(sinker)
 	extern inline function new(v: Int)
 		this = v;
