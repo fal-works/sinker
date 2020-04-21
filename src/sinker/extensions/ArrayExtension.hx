@@ -9,8 +9,9 @@ class ArrayExtension {
 		@return The last element of the array.
 	**/
 	public static extern inline function peekSafe<T>(_this: Array<T>): Maybe<T> {
-		final len = _this.length;
-		return if (len > 0) Maybe.from(_this[len - 1]) else Maybe.none();
+		final index = _this.length.minusOne();
+
+		return if (index.isSome()) Maybe.from(_this[index.unwrap()]) else Maybe.none();
 	}
 
 	/**
