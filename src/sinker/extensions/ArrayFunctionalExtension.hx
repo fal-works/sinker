@@ -48,9 +48,9 @@ class ArrayFunctionalExtension {
 	public static inline function indexOfFirst<T>(
 		_this: Array<T>,
 		predicate: (element: T) -> Bool
-	): Int {
+	): MaybeUInt {
 		final len = _this.length;
-		var index = UInt.none;
+		var index = MaybeUInt.none;
 		var i = UInt.zero;
 		while (i < len) {
 			if (predicate(_this[i])) {
@@ -193,7 +193,7 @@ class ArrayFunctionalExtension {
 		predicate: T->Bool,
 		defaultValue: T
 	): T {
-		var foundIndex = UInt.none;
+		var foundIndex = MaybeUInt.none;
 
 		final len = _this.length;
 		var i = UInt.zero;
@@ -207,7 +207,7 @@ class ArrayFunctionalExtension {
 			++i;
 		}
 
-		return if (foundIndex >= 0) _this.removeAt(foundIndex) else defaultValue;
+		return if (foundIndex.isSome()) _this.removeAt(foundIndex.unwrapUnsafe()) else defaultValue;
 	}
 
 	/**

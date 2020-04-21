@@ -8,16 +8,6 @@ package sinker;
 @:notNull
 abstract UInt(Int) to Int from std.UInt to std.UInt {
 	/**
-		A special `UInt` value that represents the absense of valid value.
-		Internaly this is an integer value `-1`.
-	**/
-	public static var none(get, never): UInt;
-
-	static extern inline function get_none() {
-		return new UInt(-1);
-	}
-
-	/**
 		Value `0` in `UInt` representation.
 	**/
 	public static var zero(get, never): UInt;
@@ -161,18 +151,6 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 		return Std.string(this);
 
 	/**
-		@return `true` if `this` is not `UInt.none`.
-	**/
-	public extern inline function isSome(): Bool
-		return this != UInt.none.int();
-
-	/**
-		@return `true` if `this` is `UInt.none`.
-	**/
-	public extern inline function isNone(): Bool
-		return this == UInt.none.int();
-
-	/**
 		@return `true` if `this` is `0`.
 	**/
 	public extern inline function isZero(): Bool
@@ -190,23 +168,11 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 		Returns `this - 1`.
 		Unlike `--this`, it does not modify `this` value.
 
-		It also does not check against negative even `#if debug`.
+		It also returns the result as `MaybeUInt` rather than checking immediately against negative.
 	**/
-	public extern inline function minusOneUnsafe(): UInt {
+	public extern inline function minusOne(): MaybeUInt {
 		return new UInt(this - 1);
 	}
-
-	/**
-		@return `this` if it is not `UInt.none`, otherwise `defaultValue`.
-	**/
-	public extern inline function or(defaultValue: UInt): UInt
-		return if (isSome()) new UInt(this) else defaultValue;
-
-	/**
-		@return `this` if it is not `UInt.none`, otherwise the result of `defaultValueFactory`.
-	**/
-	public extern inline function orElse(defaultValueFactory: () -> UInt): UInt
-		return if (isSome()) new UInt(this) else defaultValueFactory();
 
 	@:allow(sinker)
 	extern inline function new(v: Int)
