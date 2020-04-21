@@ -133,7 +133,7 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	/**
 		Casts `this` to `Float`.
 	**/
-	public extern inline function float(): Float
+	public extern inline function toFloat(): Float
 		return this;
 
 	/**
