@@ -10,7 +10,7 @@ abstract MaybeUInt(UInt) from UInt {
 		A special value that represents the absense of valid `UInt` value.
 		Internaly this is an integer value `-1`.
 	**/
-	public static var none(get, never): MaybeUInt;
+	public static extern inline final none: MaybeUInt = cast -1;
 
 	/**
 		@return `value` in `MaybeUInt` representation.
@@ -22,13 +22,13 @@ abstract MaybeUInt(UInt) from UInt {
 		@return `true` if `this` is not `MaybeUInt.none`.
 	**/
 	public extern inline function isSome(): Bool
-		return this != noneValue();
+		return from(this) != none;
 
 	/**
 		@return `true` if `this` is `MaybeUInt.none`.
 	**/
 	public extern inline function isNone(): Bool
-		return this == noneValue();
+		return from(this) == none;
 
 	/**
 		@return The value of `this`. Throws error if `this.isNone()`.
@@ -57,11 +57,4 @@ abstract MaybeUInt(UInt) from UInt {
 	**/
 	public extern inline function orElse(defaultValueFactory: () -> UInt): UInt
 		return if (isSome()) this else defaultValueFactory();
-
-	static extern inline function get_none()
-		return noneValue();
-
-	static extern inline function noneValue(): UInt {
-		return new UInt(-1);
-	}
 }
