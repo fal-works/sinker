@@ -47,4 +47,11 @@ class UInts {
 	**/
 	public static extern inline function max(a: UInt, b: UInt): UInt
 		return if (a < b) b else a;
+
+	/**
+		@return `pow(base, exponent)`
+	**/
+	public static extern inline function pow(base: UInt, exponent: UInt): UInt {
+		return new UInt(Floats.toInt(Math.pow(base, exponent)));
+	}
 }
