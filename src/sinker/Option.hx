@@ -9,6 +9,12 @@ import sinker.errors.Errors;
 @:notNull
 abstract Option<T>(StdOption<T>) from StdOption<T> to StdOption<T> {
 	/**
+		Creates a new `Option<T>` instance from nullable `value`.
+	**/
+	public static extern inline function fromNullable<T>(value: Null<T>): Option<T>
+		return if (value != null) Some(value) else None;
+
+	/**
 		@return New `Some(value: T)` instance.
 	**/
 	public static extern inline function some<T>(value: T): Option<T>
