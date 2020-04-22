@@ -54,21 +54,21 @@ Abstract over standard `haxe.ds.Option<T>` with some additional methods.
 
 ## Utility classes
 
-### Ints
+The classes below have static utility methods for each type.
 
-Static utility methods for `Int`.
+- `Ints`
+- `UInts`
+- `Floats`
+- `Arrays`
 
-### UInts
+## Static extension classes
 
-Static utility methods for `UInt`.
+The classes below are for static extension for each type.
 
-### Floats
-
-Static utility methods for `UInt`.
-
-### Arrays
-
-Static utility methods for `Array<T>`.
+- `ArrayExtension`
+- `ArrayFunctionalExtension`
+- `ArrayNullableExtension`
+- `StringExtension`
 
 
 ## Compilation flags

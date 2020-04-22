@@ -8,3 +8,6 @@ typedef ArrayFunctionalExtension_ = sinker.extensions.ArrayFunctionalExtension;
 
 @:dox(hide)
 typedef ArrayNullableExtension_ = sinker.extensions.ArrayNullableExtension;
+
+@:dox(hide)
+typedef StringExtension_ = sinker.extensions.StringExtension;

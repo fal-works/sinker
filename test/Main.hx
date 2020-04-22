@@ -30,6 +30,10 @@ class Main {
 		array.forEach(value -> arraySum += value);
 		test(arraySum == 6);
 
+		test("abc".getIndexOf("c") == 2);
+		test("aaa.bbb".getIndexOfDot() == 3);
+		test("aaa.bbb".sliceAfterLastDot() == "bbb");
+
 		trace('Passed all cases.');
 	}
 }
