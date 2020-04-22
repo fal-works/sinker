@@ -1,5 +1,7 @@
 package sinker;
 
+import sinker.errors.ArrayErrors;
+
 /**
 	Utility for `Array`.
 **/
@@ -34,7 +36,13 @@ class Arrays {
 			throw "Failed to blit. Source and destination cannot be the same.";
 		if (sourcePosition + rangeLength > source.length
 			|| destinationPosition + rangeLength > destination.length)
-			throw blitBoundsError(source, sourcePosition, destination, destinationPosition, rangeLength);
+			throw ArrayErrors.blitBounds(
+				source,
+				sourcePosition,
+				destination,
+				destinationPosition,
+				rangeLength
+			);
 		#end
 
 		#if cpp
@@ -63,7 +71,7 @@ class Arrays {
 		if (source == destination)
 			throw "Failed to blit. Source and destination cannot be the same.";
 		if (rangeLength > source.length || rangeLength > destination.length)
-			throw blitZeroBoundsError(source, destination, rangeLength);
+			throw ArrayErrors.blitZeroBounds(source, destination, rangeLength);
 		#end
 
 		#if cpp
@@ -76,46 +84,4 @@ class Arrays {
 		}
 		#end
 	}
-
-	#if sinker_debug
-	static function blitBoundsError(
-		source: Array<Dynamic>,
-		sourcePosition: UInt,
-		destination: Array<Dynamic>,
-		destinationPosition: UInt,
-		rangeLength: UInt
-	): String {
-		final message = new StringBuf();
-		message.add('Failed to blit. Out of bounds.');
-		message.add('\nSource length: ');
-		message.add(source.length);
-		message.add(', position: ');
-		message.add(sourcePosition);
-		message.add('\nDestination length: ');
-		message.add(destination.length);
-		message.add(', position: ');
-		message.add(destinationPosition);
-		message.add('\nRange length: ');
-		message.add(rangeLength);
-
-		return message.toString();
-	}
-
-	static function blitZeroBoundsError(
-		source: Array<Dynamic>,
-		destination: Array<Dynamic>,
-		rangeLength: UInt
-	): String {
-		final message = new StringBuf();
-		message.add('Failed to blit. Out of bounds.');
-		message.add('\nSource length: ');
-		message.add(source.length);
-		message.add('\nDestination length: ');
-		message.add(destination.length);
-		message.add('\nRange length: ');
-		message.add(rangeLength);
-
-		return message.toString();
-	}
-	#end
 }

@@ -1,6 +1,7 @@
 package sinker;
 
 import Array as StdArray;
+import sinker.errors.ArrayErrors;
 
 /**
 	Wrapper of standard `Array`.
@@ -41,7 +42,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 
 	@:op([]) extern inline function get(index: UInt): T {
 		#if sinker_debug
-		if (index >= length) throw getSetError(index);
+		if (index >= length) throw ArrayErrors.index(this, index);
 		#end
 
 		#if cpp
@@ -53,7 +54,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 
 	@:op([]) extern inline function set(index: UInt, value: T): T {
 		#if sinker_debug
-		if (index >= length) throw getSetError(index);
+		if (index >= length) throw ArrayErrors.index(this, index);
 		#end
 
 		#if cpp
@@ -117,9 +118,4 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 
 	public extern inline function resize(len: UInt): Void
 		this.resize(len.int());
-
-	#if sinker_debug
-	function getSetError(index: UInt): String
-		return 'Index $index is out of bounds. Array length: $length';
-	#end
 }

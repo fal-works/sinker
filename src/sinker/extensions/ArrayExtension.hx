@@ -1,6 +1,7 @@
 package sinker.extensions;
 
 import sinker.*;
+import sinker.errors.ArrayErrors;
 
 using sinker.extensions.ArrayFunctionalExtension;
 
@@ -33,7 +34,7 @@ class ArrayExtension {
 	): Array<T> {
 		#if sinker_debug
 		if (endIndex > _this.length)
-			throw fillBoundsError(_this, startIndex, endIndex);
+			throw ArrayErrors.fillBounds(_this, startIndex, endIndex);
 		#end
 
 		var i = startIndex;
@@ -65,7 +66,7 @@ class ArrayExtension {
 		#if sinker_debug
 		if (sourceIndex + rangeLength > _this.length
 			|| destinationIndex + rangeLength > _this.length)
-			throw blitInternalBoundsError(
+			throw ArrayErrors.blitInternalBounds(
 				_this,
 				sourceIndex,
 				destinationIndex,
@@ -157,7 +158,7 @@ class ArrayExtension {
 	): Void {
 		#if sinker_debug
 		if (indexA >= _this.length || indexB >= _this.length)
-			throw swapBoundsError(_this, indexA, indexB);
+			throw ArrayErrors.swapBounds(_this, indexA, indexB);
 		#end
 
 		var tmp = _this[indexA];
@@ -369,60 +370,4 @@ class ArrayExtension {
 
 	static extern inline function u(v: Int): UInt
 		return new UInt(v);
-
-	#if sinker_debug
-	static function fillBoundsError(
-		array: Array<Dynamic>,
-		startIndex: UInt,
-		endIndex: UInt
-	): String {
-		final message = new StringBuf();
-		message.add('Failed to fill. Out of bounds.');
-		message.add('\nArray length: ');
-		message.add(array.length);
-		message.add('\nStart index: ');
-		message.add(startIndex);
-		message.add('\nEnd index: ');
-		message.add(endIndex);
-
-		return message.toString();
-	}
-
-	static function blitInternalBoundsError(
-		array: Array<Dynamic>,
-		sourceIndex: UInt,
-		destinationIndex: UInt,
-		rangeLength: UInt
-	): String {
-		final message = new StringBuf();
-		message.add('Failed to blit. Out of bounds.');
-		message.add('\nArray length: ');
-		message.add(array.length);
-		message.add('\nSource index: ');
-		message.add(sourceIndex);
-		message.add('\nDestination index: ');
-		message.add(destinationIndex);
-		message.add('\nRange length: ');
-		message.add(rangeLength);
-
-		return message.toString();
-	}
-
-	static function swapBoundsError(
-		array: Array<Dynamic>,
-		indexA: UInt,
-		indexB: UInt
-	): String {
-		final message = new StringBuf();
-		message.add('Failed to swap. Out of bounds.');
-		message.add('\nArray length: ');
-		message.add(array.length);
-		message.add('\nIndex A: ');
-		message.add(indexA);
-		message.add('\nIndex B: ');
-		message.add(indexB);
-
-		return message.toString();
-	}
-	#end
 }
