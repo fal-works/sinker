@@ -1,6 +1,7 @@
 package sinker;
 
 import haxe.Constraints.Function;
+import sinker.errors.Errors;
 
 /**
 	Wrapper of `Null<T>` for:
@@ -89,7 +90,7 @@ abstract Maybe<T>(Null<T>) {
 	**/
 	public extern inline function unwrap(): T {
 		#if sinker_debug
-		if (this == null) throw "Failed to unwrap. Value is null.";
+		if (this == null) throw Errors.maybeUnwrap();
 		#end
 		@:nullSafety(Off) return this;
 	}

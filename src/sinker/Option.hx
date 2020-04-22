@@ -1,6 +1,7 @@
 package sinker;
 
 import haxe.ds.Option as StdOption;
+import sinker.errors.Errors;
 
 /**
 	Wrapper of `haxe.ds.Option` with some additional methods.
@@ -106,7 +107,7 @@ abstract Option<T>(StdOption<T>) from StdOption<T> to StdOption<T> {
 	public extern inline function unwrap(): T {
 		return switch this {
 			case Some(value): value;
-			case None: throw "Failed to unwrap. Value is None.";
+			case None: throw Errors.optionUnwrap();
 		}
 	}
 }

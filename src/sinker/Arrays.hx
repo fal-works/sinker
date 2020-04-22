@@ -33,7 +33,7 @@ class Arrays {
 	): Void {
 		#if sinker_debug
 		if (source == destination)
-			throw "Failed to blit. Source and destination cannot be the same.";
+			throw ArrayErrors.blitSame();
 		if (sourcePosition + rangeLength > source.length
 			|| destinationPosition + rangeLength > destination.length)
 			throw ArrayErrors.blitBounds(
@@ -69,7 +69,7 @@ class Arrays {
 	): Void {
 		#if sinker_debug
 		if (source == destination)
-			throw "Failed to blit. Source and destination cannot be the same.";
+			throw ArrayErrors.blitSame();
 		if (rangeLength > source.length || rangeLength > destination.length)
 			throw ArrayErrors.blitZeroBounds(source, destination, rangeLength);
 		#end

@@ -5,6 +5,9 @@ class ArrayErrors {
 	public static function index(array: Array<Dynamic>, index: UInt): String
 		return 'Index $index is out of bounds. Array length: ${array.length}';
 
+	public static function blitSame(): String
+		return "Failed to blit. Source and destination cannot be the same.";
+
 	public static function blitBounds(
 		source: Array<Dynamic>,
 		sourceIndex: UInt,
