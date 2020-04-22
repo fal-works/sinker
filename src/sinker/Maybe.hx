@@ -11,6 +11,8 @@ import sinker.errors.Errors;
 **/
 @:notNull
 abstract Maybe<T>(Null<T>) {
+	static final noneString = "none";
+
 	/**
 		Casts any object to `Maybe<T>`.
 	**/
@@ -94,6 +96,12 @@ abstract Maybe<T>(Null<T>) {
 		#end
 		@:nullSafety(Off) return this;
 	}
+
+	/**
+		@return The `String` representation of `this`. "null" if null.
+	**/
+	public extern inline function toString(): String
+		return Std.string(this);
 
 	extern inline function new(data: Null<T>)
 		this = data;
