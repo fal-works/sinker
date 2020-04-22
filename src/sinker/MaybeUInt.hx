@@ -15,7 +15,7 @@ abstract MaybeUInt(UInt) from UInt {
 	/**
 		@return `value` in `MaybeUInt` representation.
 	**/
-	public extern inline function from(value: UInt): MaybeUInt
+	public static extern inline function from(value: UInt): MaybeUInt
 		return value;
 
 	/**
