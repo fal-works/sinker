@@ -32,7 +32,8 @@ class ArrayExtension {
 		endIndex: UInt
 	): Array<T> {
 		#if sinker_debug
-		if (endIndex > _this.length) throw "Invalid value.";
+		if (endIndex > _this.length)
+			throw fillBoundsError(_this, startIndex, endIndex);
 		#end
 
 		var i = startIndex;
@@ -53,41 +54,47 @@ class ArrayExtension {
 	}
 
 	/**
-		Copies elements from source to destination position within a same array.
+		Copies elements from source to destination index within a same array.
 	**/
 	public static inline function blitInternal<T>(
 		_this: Array<T>,
-		sourcePosition: UInt,
-		destinationPosition: UInt,
+		sourceIndex: UInt,
+		destinationIndex: UInt,
 		rangeLength: UInt
 	): Void {
 		#if sinker_debug
-		if (sourcePosition + rangeLength > _this.length) throw "Invalid values.";
-		if (destinationPosition + rangeLength > _this.length) throw "Invalid values.";
+		if (sourceIndex + rangeLength > _this.length
+			|| destinationIndex + rangeLength > _this.length)
+			throw blitInternalBoundsError(
+				_this,
+				sourceIndex,
+				destinationIndex,
+				rangeLength
+			);
 		#end
 
 		#if cpp
 		cpp.NativeArray.blit(
 			_this,
-			destinationPosition,
+			destinationIndex,
 			_this,
-			sourcePosition,
+			sourceIndex,
 			rangeLength
 		);
 		#else
-		if (sourcePosition < destinationPosition) {
-			var i = sourcePosition + rangeLength;
-			var k = destinationPosition + rangeLength;
+		if (sourceIndex < destinationIndex) {
+			var i = sourceIndex + rangeLength;
+			var k = destinationIndex + rangeLength;
 
-			while (i > sourcePosition) {
+			while (i > sourceIndex) {
 				--i;
 				--k;
 				_this[k] = _this[i];
 			}
-		} else if (sourcePosition > destinationPosition) {
-			var i = sourcePosition;
-			var k = destinationPosition;
-			final endI = sourcePosition + rangeLength;
+		} else if (sourceIndex > destinationIndex) {
+			var i = sourceIndex;
+			var k = destinationIndex;
+			final endI = sourceIndex + rangeLength;
 
 			while (i < endI) {
 				_this[k] = _this[i];
@@ -149,8 +156,8 @@ class ArrayExtension {
 		indexB: UInt
 	): Void {
 		#if sinker_debug
-		if (indexA >= _this.length) throw "Invalid value.";
-		if (indexB >= _this.length) throw "Invalid value.";
+		if (indexA >= _this.length || indexB >= _this.length)
+			throw swapBoundsError(_this, indexA, indexB);
 		#end
 
 		var tmp = _this[indexA];
@@ -362,4 +369,60 @@ class ArrayExtension {
 
 	static extern inline function u(v: Int): UInt
 		return new UInt(v);
+
+	#if sinker_debug
+	static function fillBoundsError(
+		array: Array<Dynamic>,
+		startIndex: UInt,
+		endIndex: UInt
+	): String {
+		final message = new StringBuf();
+		message.add('Failed to fill. Out of bounds.');
+		message.add('\nArray length: ');
+		message.add(array.length);
+		message.add('\nStart index: ');
+		message.add(startIndex);
+		message.add('\nEnd index: ');
+		message.add(endIndex);
+
+		return message.toString();
+	}
+
+	static function blitInternalBoundsError(
+		array: Array<Dynamic>,
+		sourceIndex: UInt,
+		destinationIndex: UInt,
+		rangeLength: UInt
+	): String {
+		final message = new StringBuf();
+		message.add('Failed to blit. Out of bounds.');
+		message.add('\nArray length: ');
+		message.add(array.length);
+		message.add('\nSource index: ');
+		message.add(sourceIndex);
+		message.add('\nDestination index: ');
+		message.add(destinationIndex);
+		message.add('\nRange length: ');
+		message.add(rangeLength);
+
+		return message.toString();
+	}
+
+	static function swapBoundsError(
+		array: Array<Dynamic>,
+		indexA: UInt,
+		indexB: UInt
+	): String {
+		final message = new StringBuf();
+		message.add('Failed to swap. Out of bounds.');
+		message.add('\nArray length: ');
+		message.add(array.length);
+		message.add('\nIndex A: ');
+		message.add(indexA);
+		message.add('\nIndex B: ');
+		message.add(indexB);
+
+		return message.toString();
+	}
+	#end
 }
