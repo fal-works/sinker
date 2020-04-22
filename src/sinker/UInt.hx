@@ -152,7 +152,7 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 
 	/**
 		Returns `this + 1`.
-		Unlike `++this`, it does not modify `this` value.
+		Unlike `++this`, it does not reassign `this` value.
 	**/
 	public extern inline function plusOne(): UInt {
 		return new UInt(this + 1);
@@ -160,7 +160,7 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 
 	/**
 		Returns `this - 1`.
-		Unlike `--this`, it does not modify `this` value.
+		Unlike `--this`, it does not reassign `this` value.
 
 		It also returns the result as `MaybeUInt` rather than checking immediately against negative.
 	**/
