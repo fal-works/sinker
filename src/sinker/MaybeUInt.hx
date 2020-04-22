@@ -13,10 +13,31 @@ abstract MaybeUInt(UInt) from UInt {
 	public static extern inline final none: MaybeUInt = cast -1;
 
 	/**
-		@return `value` in `MaybeUInt` representation.
+		Casts `value` to `MaybeUInt.
 	**/
 	public static extern inline function from(value: UInt): MaybeUInt
 		return value;
+
+	/**
+		Casts `value` to `MaybeUInt`.
+		Value `-1` corresponds to `MaybeUInt.none`.
+
+		`#if sinker_debug` throws error if `value` is less than `-1`.
+		@param value Any integer that is `-1` or greater.
+	**/
+	@:from public static extern inline function fromInt(value: Int): MaybeUInt {
+		#if sinker_debug
+		if (-1 <= value) return cast value;
+		else throw fromIntErrorMessage(value);
+		#else
+		return cast value;
+		#end
+	}
+
+	#if sinker_debug
+	static function fromIntErrorMessage(value: Int): String
+		return 'Cannot cast to MaybeUInt. Invalid value: $value';
+	#end
 
 	/**
 		@return `true` if `this` is not `MaybeUInt.none`.
