@@ -23,10 +23,15 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	**/
 	@:from public static extern inline function fromInt(v: Int): UInt {
 		#if sinker_debug
-		if (v < 0) throw 'Failed to cast value to UInt: $v';
+		if (v < 0) throw fromIntError(v);
 		#end
 		return new UInt(v);
 	}
+
+	#if sinker_debug
+	static function fromIntError(value: Int): String
+		return 'Failed to cast value to UInt: $value';
+	#end
 
 	@:op(A + B) static extern inline function addInt(a: UInt, b: Int): UInt
 		return fromInt(a.int() + b);
