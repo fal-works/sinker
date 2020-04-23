@@ -60,6 +60,8 @@ The classes below have static utility methods for each type.
 - `UInts`
 - `Floats`
 - `Arrays`
+- `Nulls`
+
 
 ## Static extension classes
 
