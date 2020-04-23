@@ -7,7 +7,7 @@ class Nulls {
 	/**
 		Casts `value` to `Maybe<T>`.
 	**/
-	public static extern inline function toMaybe<T>(value: Null<T>): Maybe<T>
+	public static extern inline function maybe<T>(value: Null<T>): Maybe<T>
 		return Maybe.from(value);
 
 	/**
