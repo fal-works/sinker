@@ -42,13 +42,13 @@ abstract Maybe<T>(Null<T>) {
 	/**
 		Casts `this` to `Null<T>`.
 	**/
-	public extern inline function toNullable(): Null<T>
+	public extern inline function nullable(): Null<T>
 		return this;
 
 	/**
 		@return New `Option` instance.
 	**/
-	public extern inline function createOption(): Option<T>
+	public extern inline function toOption(): Option<T>
 		return if (this != null) Some(this) else None;
 
 	/**
