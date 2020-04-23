@@ -101,7 +101,7 @@ abstract Maybe<T>(Null<T>) {
 		@return The `String` representation of `this`. "null" if null.
 	**/
 	public extern inline function toString(): String
-		return Std.string(this);
+		return @:nullSafety(Off) Std.string(this);
 
 	extern inline function new(data: Null<T>)
 		this = data;
