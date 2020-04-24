@@ -1,6 +1,8 @@
 package sinker;
 
+#if sinker_debug
 import sinker.errors.ArrayErrors;
+#end
 
 /**
 	Utility for `Array`.

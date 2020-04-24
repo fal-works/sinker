@@ -1,7 +1,9 @@
 package sinker.extensions;
 
 import sinker.*;
+#if sinker_debug
 import sinker.errors.ArrayErrors;
+#end
 
 using sinker.extensions.ArrayFunctionalExtension;
 

@@ -1,7 +1,9 @@
 package sinker;
 
 import Array as StdArray;
+#if sinker_debug
 import sinker.errors.ArrayErrors;
+#end
 
 /**
 	Wrapper of standard `Array`.
