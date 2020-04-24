@@ -1,7 +1,7 @@
 package sinker.errors;
 
-#if sinker_debug
 class Errors {
+	#if sinker_debug
 	public static function uintFromInt(value: Int): String
 		return 'Cannot cast to UInt. Invalid value: $value';
 
@@ -13,8 +13,8 @@ class Errors {
 
 	public static function maybeUnwrap(): String
 		return "Failed to unwrap. Value is null.";
+	#end
 
 	public static function optionUnwrap(): String
 		return "Failed to unwrap. Value is null.";
 }
-#end
