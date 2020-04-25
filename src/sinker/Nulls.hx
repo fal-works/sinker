@@ -24,6 +24,13 @@ class Nulls {
 		return Options.fromNullable(value);
 
 	/**
+		Converts `value` to `String`.
+		Same as `Std.string()`, but can also be used in `nullSafety` mode.
+	**/
+	public static extern inline function toString<T>(value: Null<T>): String
+		return Std.string(value);
+
+	/**
 		Converts `value` to `Maybe<String>`.
 	**/
 	public static inline function toMaybeString<T>(value: Null<T>): Maybe<String>

@@ -12,6 +12,11 @@ class NullCallbacks {
 	public static final toOption = toOptionFunction;
 
 	/**
+		@see `Nulls.toString()`
+	**/
+	public static final toString = toStringFunction;
+
+	/**
 		@see `Nulls.toMaybeString()`
 	**/
 	public static final toMaybeString = Nulls.toMaybeString;
@@ -38,4 +43,8 @@ class NullCallbacks {
 	/** Internal function for disabling inlining. **/
 	static function toOptionFunction<T>(value: Null<T>)
 		return Nulls.toOption(value);
+
+	/** Internal function for disabling inlining. **/
+		static function toStringFunction<T>(value: Null<T>)
+			return Nulls.toString(value);
 }
