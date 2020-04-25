@@ -32,6 +32,7 @@ class Nulls {
 
 	/**
 		Converts `value` to `Maybe<String>`.
+		Unlike `toString()`, does not convert `value` if it is `null`.
 	**/
 	public static inline function toMaybeString<T>(value: Null<T>): Maybe<String>
 		return Maybe.from(if (value != null) Std.string(value) else null);
@@ -58,6 +59,6 @@ class Nulls {
 		Prases `value` and converts it to `Float`.
 		The result is `NaN` if `value` cannot be parsed as `Float`.
 	**/
-	public static inline function parseFloat<T>(value: Null<T>): Float
+	public static inline function toFloat<T>(value: Null<T>): Float
 		return Std.parseFloat(Std.string(value));
 }
