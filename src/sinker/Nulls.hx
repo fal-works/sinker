@@ -3,6 +3,7 @@ package sinker;
 /**
 	Utility for `Null<T>`.
 **/
+@:nullSafety(Off)
 class Nulls {
 	/**
 		@return `value` if not null. Otherwise `defaultValue`.
@@ -38,7 +39,7 @@ class Nulls {
 		Parses `value` and converts it to `Maybe<Int>`.
 	**/
 	public static inline function parseInt<T>(value: Null<T>): Maybe<Int>
-		return Maybe.from(Std.parseInt(Std.string(@:nullSafety(Off) value)));
+		return Maybe.from(Std.parseInt(Std.string(value)));
 
 	/**
 		Parses `value` and converts it to `Option<Int>`.
@@ -51,5 +52,5 @@ class Nulls {
 		The result is `NaN` if `value` cannot be parsed as `Float`.
 	**/
 	public static inline function parseFloat<T>(value: Null<T>): Float
-		return Std.parseFloat(Std.string(@:nullSafety(Off) value));
+		return Std.parseFloat(Std.string(value));
 }
