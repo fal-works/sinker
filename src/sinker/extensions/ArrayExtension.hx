@@ -66,8 +66,7 @@ class ArrayExtension {
 		rangeLength: UInt
 	): Void {
 		#if sinker_debug
-		if (sourceIndex + rangeLength > _this.length
-			|| destinationIndex + rangeLength > _this.length)
+		if (sourceIndex + rangeLength > _this.length || destinationIndex + rangeLength > _this.length)
 			throw ArrayErrors.blitInternalBounds(
 				_this,
 				sourceIndex,

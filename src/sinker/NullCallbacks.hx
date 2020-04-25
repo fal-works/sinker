@@ -63,6 +63,6 @@ class NullCallbacks {
 		return Nulls.toOption(value);
 
 	/** Internal function for disabling inlining. **/
-		static function toStringFunction<T>(value: Null<T>)
-			return Nulls.toString(value);
+	static function toStringFunction<T>(value: Null<T>)
+		return Nulls.toString(value);
 }

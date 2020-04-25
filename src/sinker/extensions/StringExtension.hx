@@ -31,25 +31,37 @@ class StringExtension {
 	/**
 		@return The first index of dot (`.`). `-1` if not found.
 	**/
-	public static extern inline function getIndexOfDot(s: String, ?startIndex: Int): MaybeUInt
+	public static extern inline function getIndexOfDot(
+		s: String,
+		?startIndex: Int
+	): MaybeUInt
 		return s.getIndexOf(dot, startIndex);
 
 	/**
 		@return The first index of slash (`/`). `-1` if not found.
 	**/
-	public static extern inline function getIndexOfSlash(s: String, ?startIndex: Int): MaybeUInt
+	public static extern inline function getIndexOfSlash(
+		s: String,
+		?startIndex: Int
+	): MaybeUInt
 		return s.getIndexOf(slash, startIndex);
 
 	/**
 		@return The last index of dot (`.`). `-1` if not found.
 	**/
-	public static extern inline function getLastIndexOfDot(s: String, ?startIndex: Int): MaybeUInt
+	public static extern inline function getLastIndexOfDot(
+		s: String,
+		?startIndex: Int
+	): MaybeUInt
 		return s.getLastIndexOf(dot, startIndex);
 
 	/**
 		@return The last index of slash (`/`). `-1` if not found.
 	**/
-	public static extern inline function getLastIndexOfSlash(s: String, ?startIndex: Int): MaybeUInt
+	public static extern inline function getLastIndexOfSlash(
+		s: String,
+		?startIndex: Int
+	): MaybeUInt
 		return s.getLastIndexOf(slash, startIndex);
 
 	/**
