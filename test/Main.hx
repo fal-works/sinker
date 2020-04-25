@@ -9,6 +9,10 @@ class Main {
 	}
 
 	static function main() {
+		#if sinker_debug
+		trace("Found compilation flag: sinker_debug");
+		#end
+
 		test(Ints.divide(10, 2) == 5);
 		test(Ints.modulo(10, 3) == 1);
 		test(UInts.powerOf2(uint(3)) == 8);

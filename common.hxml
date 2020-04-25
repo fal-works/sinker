@@ -5,6 +5,8 @@
 -dce full
 
 --macro nullSafety("sinker", Strict)
+--macro sinker.internal.Initialization.run()
+
 -main Main
 
--D sinker_debug
+--debug
