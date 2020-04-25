@@ -77,7 +77,7 @@ The classes below are for static extension for each type.
 
 |flag|description|
 |---|---|
-|sinker_debug|Enables bound checks for `UInt` values and `Array` indices.|
+|sinker_debug|Enables bound checks for `UInt` values and `Array` indices. Automatically set if `--debug`.|
 
 
 ## Link
