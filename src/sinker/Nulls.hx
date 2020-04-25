@@ -29,10 +29,22 @@ class Nulls {
 		return Maybe.from(if (value != null) Std.string(value) else null);
 
 	/**
+		Converts `value` to `Option<String>`.
+	**/
+	public static inline function toOptionalString<T>(value: Null<T>): Option<String>
+		return toMaybeString(value).toOption();
+
+	/**
 		Parses `value` and converts it to `Maybe<Int>`.
 	**/
 	public static inline function parseInt<T>(value: Null<T>): Maybe<Int>
 		return Maybe.from(Std.parseInt(Std.string(@:nullSafety(Off) value)));
+
+	/**
+		Parses `value` and converts it to `Option<Int>`.
+	**/
+	public static inline function parseIntOptional<T>(value: Null<T>): Option<Int>
+		return parseInt(value).toOption();
 
 	/**
 		Prases `value` and converts it to `Float`.
