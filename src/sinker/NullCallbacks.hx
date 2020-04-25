@@ -2,6 +2,16 @@ package sinker;
 
 class NullCallbacks {
 	/**
+		@see `Nulls.isNull()`
+	**/
+	public static final isNull = isNullFunction;
+
+	/**
+		@see `Nulls.exists()`
+	**/
+	public static final exists = existsFunction;
+
+	/**
 		@see `Nulls.maybe()`
 	**/
 	public static final maybe = maybeFunction;
@@ -35,6 +45,14 @@ class NullCallbacks {
 		@see `Nulls.parseIntOptional()`
 	**/
 	public static final parseIntOptional = Nulls.parseIntOptional;
+
+	/** Internal function for disabling inlining. **/
+	static function isNullFunction<T>(value: Null<T>)
+		return Nulls.isNull(value);
+
+	/** Internal function for disabling inlining. **/
+	static function existsFunction<T>(value: Null<T>)
+		return Nulls.exists(value);
 
 	/** Internal function for disabling inlining. **/
 	static function maybeFunction<T>(value: Null<T>)

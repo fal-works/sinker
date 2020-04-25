@@ -6,6 +6,18 @@ package sinker;
 @:nullSafety(Off)
 class Nulls {
 	/**
+		@return `true` if `value` is `null`.
+	**/
+	public static extern inline function isNull<T>(value: Null<T>): Bool
+		return value == null;
+
+	/**
+		@return `true` if `value` is not `null`.
+	**/
+	public static extern inline function exists<T>(value: Null<T>): Bool
+		return value != null;
+
+	/**
 		@return `value` if not null. Otherwise `defaultValue`.
 	**/
 	public static extern inline function coalesce<T>(value: Null<T>, defaultValue: T): T
