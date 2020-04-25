@@ -18,7 +18,7 @@ class Main {
 		test(Floats.toInt(1.5) == 1);
 
 		test(Maybe.from(10).isSome());
-		test(Option.some(1).isSome());
+		test(Options.some(1).isSome());
 
 		final array: Array<Int> = [
 			1,

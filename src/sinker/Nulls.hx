@@ -20,7 +20,7 @@ class Nulls {
 		Creates a new `Option<T>` instance from nullable `value`.
 	**/
 	public static extern inline function toOption<T>(value: Null<T>): Option<T>
-		return sinker.Option.fromNullable(value);
+		return Options.fromNullable(value);
 
 	/**
 		Converts `value` to `Maybe<String>`.
