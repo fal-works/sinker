@@ -51,6 +51,9 @@ Abstract over standard `Null<T>` with stricter type cast control and some additi
 
 Abstract over standard `haxe.ds.Option<T>` with some additional methods.
 
+### Result<T>
+
+Enum, either `Ok(value: T)` or `Failed(message: String)`. Also has some additional methods.
 
 ## Utility classes
 
@@ -65,12 +68,22 @@ The classes below have static utility methods for each type.
 
 ## Static extension classes
 
-The classes below are for static extension for each type.
+Methods for static extension on:
 
-- `ArrayExtension`
-- `ArrayFunctionalExtension`
-- `ArrayNullableExtension`
-- `StringExtension`
+- `Array<T>`
+- `String`
+
+
+## Callback functions
+
+The classes below have functions that can be used as callback.
+
+They are similar to the static methods in utility classes (see above), but are declared as variables and basically have only one argument.
+
+- `IntCallbacks`
+- `UIntCallbacks`
+- `FloatCallbacks`
+- `NullCallbacks`
 
 
 ## Compilation flags
