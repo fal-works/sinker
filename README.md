@@ -40,7 +40,7 @@ Represents either an `UInt` value or the absense of valid value.
 ### Array<T>
 
 Abstract over standard `Array<T>` with several additional methods.  
-Uses `UInt` as length/indices.  
+Uses `UInt` for length/indices.  
 `#if sinker_debug` does boundary checks when accessing elements.
 
 ### Maybe<T>
