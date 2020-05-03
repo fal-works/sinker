@@ -13,9 +13,7 @@ import sinker.errors.ArrayErrors;
 **/
 @:forward(
 	join,
-	pop,
 	reverse,
-	shift,
 	sort,
 	toString,
 	unShift,
@@ -72,6 +70,12 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	public extern inline function push(element: T): UInt {
 		return new UInt(this.push(element));
 	}
+
+	public extern inline function pop(): Maybe<T>
+		return Maybe.from(this.pop());
+
+	public extern inline function shift(): Maybe<T>
+		return Maybe.from(this.shift());
 
 	public extern inline function slice(position: Int, ?end: Int): Array<T>
 		return this.slice(position, cast end);
