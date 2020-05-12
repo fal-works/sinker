@@ -242,7 +242,7 @@ class ArrayExtension {
 	}
 
 	/**
-		Removes an element at `index.
+		Removes an element at `index`.
 		@return Removed element.
 	**/
 	public static inline function removeAt<T>(_this: Array<T>, index: UInt): T {
