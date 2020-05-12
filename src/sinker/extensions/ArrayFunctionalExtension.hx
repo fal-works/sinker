@@ -178,6 +178,35 @@ class ArrayFunctionalExtension {
 	}
 
 	/**
+		Removes all elements that match `predicate`.
+		@param predicate Function that returns `true` if a given element meets the condition.
+		@return `true` if any removed.
+	**/
+	public static inline function removeAll<T>(
+		_this: Array<T>,
+		predicate: T->Bool
+	): Bool {
+		final len = _this.length;
+		var readIndex = UInt.zero;
+		var writeIndex = UInt.zero;
+		var found = false;
+		while (readIndex < len) {
+			final element = _this[readIndex];
+			++readIndex;
+			if (predicate(element)) {
+				found = true;
+				continue;
+			}
+			_this[writeIndex] = element;
+			++writeIndex;
+		}
+
+		_this.resize(writeIndex);
+
+		return found;
+	}
+
+	/**
 		Removes the first occurrence of the element.
 		@param predicate Function that returns `true` if a given element meets the condition.
 		@return First element that matches to `predicate`. `defaultValue` if not found.
