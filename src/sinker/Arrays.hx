@@ -36,7 +36,8 @@ class Arrays {
 		#if sinker_debug
 		if (source == destination)
 			throw ArrayErrors.blitSame();
-		if (sourcePosition + rangeLength > source.length || destinationPosition + rangeLength > destination.length)
+		if (sourcePosition + rangeLength > source.length
+			|| destinationPosition + rangeLength > destination.length)
 			throw ArrayErrors.blitBounds(
 				source,
 				sourcePosition,

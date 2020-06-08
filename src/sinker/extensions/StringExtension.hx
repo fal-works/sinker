@@ -27,12 +27,10 @@ class StringExtension {
 	): MaybeUInt {
 		#if js
 		// In JavaScript, s.lastIndexOf(searchString, null) returns -1
-		return MaybeUInt.fromInt(
-			if (startIndex != null)
-				s.lastIndexOf(searchString, startIndex)
-			else
-				s.lastIndexOf(searchString)
-		);
+		return MaybeUInt.fromInt(if (startIndex != null) s.lastIndexOf(
+			searchString,
+			startIndex
+		) else s.lastIndexOf(searchString));
 		#else
 		return MaybeUInt.fromInt(s.lastIndexOf(searchString, startIndex));
 		#end

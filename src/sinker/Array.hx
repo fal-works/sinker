@@ -11,16 +11,7 @@ import sinker.errors.ArrayErrors;
 	- Uses `unsafeGet()`/`unsafeSet()` on cpp target.
 	- Does boundary check `#if sinker_debug`.
 **/
-@:forward(
-	join,
-	reverse,
-	sort,
-	toString,
-	unShift,
-	insert,
-	remove,
-	iterator
-)
+@:forward(join, reverse, sort, toString, unShift, insert, remove, iterator)
 abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	public var length(get, never): UInt;
 
