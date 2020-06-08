@@ -2,12 +2,12 @@
 
 Core utility library for Haxe.
 
-**Requires Haxe 4** (developed with v4.0.5).
+**Requires Haxe 4** (developed with v4.1.1).
 
 
 ## Caveats
 
-- Basically platform-independent, however the main target is HashLink.
+- Basically platform-independent, however the main target is Eval and HashLink.
 - Not yet very well tested.
 - Quite unstable!
 
@@ -45,7 +45,8 @@ Uses `UInt` for length/indices.
 
 ### Maybe<T>
 
-Abstract over standard `Null<T>` with stricter type cast control and some additional methods.
+Abstract over standard `Null<T>` with stricter type cast control and some additional methods.  
+`#if sinker_debug` checks against null when unwrapping.
 
 ### Option<T>
 
@@ -86,11 +87,11 @@ They are similar to the static methods in utility classes (see above), but are d
 - `NullCallbacks`
 
 
-## Compilation flags
+## Compiler flags
 
 |flag|description|
 |---|---|
-|sinker_debug|Enables bound checks for `UInt` values and `Array` indices. Automatically set if `--debug`.|
+|sinker_debug|Enables bound checks for `UInt` values and `Array` indices, and `null` checks in `Maybe.unwrap()`. Automatically set if `--debug`.|
 
 
 ## Link
