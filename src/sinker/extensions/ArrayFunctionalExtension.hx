@@ -178,6 +178,32 @@ class ArrayFunctionalExtension {
 	}
 
 	/**
+		Returns the first element that is successfully mapped by `tryMapCallback`.
+		@param tryMapCallback Function that maps a given element and returns the result
+		only if the element or the mapping result meets the condition.
+	**/
+	public static inline function mapFirst<T, S>(
+		_this: Array<T>,
+		tryMapCallback: T->Maybe<S>
+	): Maybe<S> {
+		var found: Maybe<S> = Maybe.none();
+
+		final len = _this.length;
+		var i = UInt.zero;
+		while (i < len) {
+			final mapped = tryMapCallback(_this[i]);
+			if (mapped.isSome()) {
+				found = mapped;
+				break;
+			}
+
+			++i;
+		}
+
+		return found;
+	}
+
+	/**
 		Removes all elements that match `predicate`.
 		@param predicate Function that returns `true` if a given element meets the condition.
 		@return `true` if any removed.
@@ -259,6 +285,30 @@ class ArrayFunctionalExtension {
 		}
 
 		return found;
+	}
+
+	/**
+		Filters and maps `this` array at once.
+		@param predicate Function that returns `true` if a given element meets the condition.
+		@param tryMapCallback Function that maps a given element and returns the result
+		only if the element or the mapping result meets the condition.
+		@return New array of elements that have been successfully mapped.
+	**/
+	public static inline function filterMap<T, S>(
+		_this: Array<T>,
+		tryMapCallback: T->Maybe<S>
+	): Array<S> {
+		var newArray: Array<S> = [];
+
+		final len = _this.length;
+		var i = UInt.zero;
+		while (i < len) {
+			final mapped = tryMapCallback(_this[i]);
+			if (mapped.isSome()) newArray.push(mapped.unwrap());
+			++i;
+		}
+
+		return newArray;
 	}
 
 	/**
