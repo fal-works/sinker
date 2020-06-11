@@ -208,10 +208,7 @@ class ArrayFunctionalExtension {
 		@param predicate Function that returns `true` if a given element meets the condition.
 		@return `true` if any removed.
 	**/
-	public static inline function removeAll<T>(
-		_this: Array<T>,
-		predicate: T->Bool
-	): Bool {
+	public static inline function removeAll<T>(_this: Array<T>, predicate: T->Bool): Bool {
 		final len = _this.length;
 		var readIndex = UInt.zero;
 		var writeIndex = UInt.zero;
