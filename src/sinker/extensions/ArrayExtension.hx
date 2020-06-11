@@ -9,26 +9,55 @@ using sinker.extensions.ArrayFunctionalExtension;
 
 class ArrayExtension {
 	/**
-		@return The last element of the array.
+		@return The first element without checking if `this` is empty.
 	**/
-	public static extern inline function peekSafe<T>(_this: Array<T>): Maybe<T> {
+	public static extern inline function getFirst<T>(_this: Array<T>): T
+		return _this[UInt.zero];
+
+	/**
+		@return The first element, or `Maybe.none()` if empty.
+	**/
+	public static extern inline function getFirstSafe<T>(_this: Array<T>): Maybe<T>
+		return if (_this.length != UInt.zero) Maybe.from(_this[UInt.zero]) else Maybe.none();
+
+	/**
+		@return The last element without checking if `this` is empty.
+	**/
+	public static extern inline function getLast<T>(_this: Array<T>): T
+		return _this[_this.length - 1];
+
+	/**
+		@return The last element, or `Maybe.none()` if empty.
+	**/
+	public static extern inline function getLastSafe<T>(_this: Array<T>): Maybe<T> {
 		final index = _this.length.minusOne();
 
 		return if (index.isSome()) Maybe.from(_this[index.unwrap()]) else Maybe.none();
 	}
 
 	/**
-		@return The last element of the array.
+		Alias for `getFirst()`.
 	**/
-	public static extern inline function peek<T>(_this: Array<T>): T {
-		return _this[_this.length - 1];
-	}
+	public static extern inline function peekFront<T>(_this: Array<T>): T
+		return getFirst(_this);
 
 	/**
-		@return The first element of the array.
+		Alias for `getFirstSafe()`.
 	**/
 	public static extern inline function peekFrontSafe<T>(_this: Array<T>): Maybe<T>
-		return if (_this.length != UInt.zero) Maybe.from(_this[UInt.zero]) else Maybe.none();
+		return getFirstSafe(_this);
+
+	/**
+		Alias for `getLast()`.
+	**/
+	public static extern inline function peek<T>(_this: Array<T>): T
+		return getLast(_this);
+
+	/**
+		Alias for `getLastSafe()`.
+	**/
+	public static extern inline function peekSafe<T>(_this: Array<T>): Maybe<T>
+		return getLastSafe(_this);
 
 	/**
 		Fills the array with `value` from `startIndex` to (but not including) `endIndex`.
