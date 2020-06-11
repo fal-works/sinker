@@ -9,6 +9,12 @@ using sinker.extensions.ArrayFunctionalExtension;
 
 class ArrayExtension {
 	/**
+		@return `true` if `this.length` is zero.
+	**/
+	public static extern inline function isEmpty<T>(_this: Array<T>): Bool
+		return _this.length == UInt.zero;
+
+	/**
 		@return The first element without checking if `this` is empty.
 	**/
 	public static extern inline function getFirst<T>(_this: Array<T>): T
