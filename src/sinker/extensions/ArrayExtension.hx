@@ -25,6 +25,12 @@ class ArrayExtension {
 	}
 
 	/**
+		@return The first element of the array.
+	**/
+	public static extern inline function peekFrontSafe<T>(_this: Array<T>): Maybe<T>
+		return if (_this.length != UInt.zero) Maybe.from(_this[UInt.zero]) else Maybe.none();
+
+	/**
 		Fills the array with `value` from `startIndex` to (but not including) `endIndex`.
 		@return The filled array.
 	**/
