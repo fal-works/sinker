@@ -76,6 +76,18 @@ abstract Maybe<T>(Null<T>) {
 		return if (this != null) this else defaultFactory();
 
 	/**
+		@return `this` if `this.isSome()`, otherwise `other`.
+	**/
+	public extern inline function coalesce(other: Maybe<T>): Maybe<T>
+		return if (this != null) Maybe.from(this) else other;
+
+	/**
+		@return `this` if `this.isSome()`, otherwise the result of `otherFactory()`.
+	**/
+	public extern inline function coalesceWith(otherFactory: () -> Maybe<T>): Maybe<T>
+		return if (this != null) Maybe.from(this) else otherFactory();
+
+	/**
 		Runs `callback` only if `this` is not null.
 	**/
 	public extern inline function may(callback: T->Void): Void
