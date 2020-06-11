@@ -1,5 +1,7 @@
 package sinker.extensions;
 
+import sinker.errors.Errors;
+
 using sinker.extensions.StringExtension;
 
 class StringExtension {
@@ -120,5 +122,27 @@ class StringExtension {
 			case 1: s.toLowerCase();
 			default: s.charAt(0).toLowerCase() + s.substr(1);
 		}
+	}
+
+	/**
+		@return Character code of the first character.
+		`#if sinker_debug` Throws error if the string is empty.
+	**/
+	public static inline function firstCharCode(s: String): Int {
+		#if sinker_debug
+		if (s.length == 0) throw Errors.emptyString();
+		#end
+		return s.charCodeAt(0);
+	}
+
+	/**
+		@return Character code of the last character.
+		`#if sinker_debug` Throws error if the string is empty.
+	**/
+	public static inline function lastCharCode(s: String): Int {
+		#if sinker_debug
+		if (s.length == 0) throw Errors.emptyString();
+		#end
+		return s.charCodeAt(s.length - 1);
 	}
 }
