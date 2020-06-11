@@ -381,8 +381,8 @@ class ArrayExtension {
 	**/
 	public static inline function cardinality<T>(_this: Array<T>) {
 		return switch _this.length {
-			case 0: Zero;
-			case 1: One(_this[0]);
+			case UInt.zero: Zero;
+			case UInt.one: One(_this[UInt.zero]);
 			default: More(_this);
 		};
 	}
