@@ -370,6 +370,26 @@ class ArrayExtension {
 		}
 	}
 
+	/**
+		@return `this` in `Zero`/`One`/`More` representation.
+	**/
+	public static inline function cardinality<T>(_this: Array<T>) {
+		return switch _this.length {
+			case 0: Zero;
+			case 1: One(_this[0]);
+			default: More(_this);
+		};
+	}
+
 	static extern inline function u(v: Int): UInt
 		return new UInt(v);
+}
+
+/**
+	`Zero`/`One`/`More` representation of values.
+**/
+enum Cardinality<T> {
+	Zero;
+	One(value: T);
+	More(values: Array<T>);
 }
