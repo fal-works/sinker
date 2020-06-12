@@ -132,7 +132,7 @@ class StringExtension {
 		#if sinker_debug
 		if (s.length == 0) throw Errors.emptyString();
 		#end
-		return s.charCodeAt(0);
+		@:nullSafety(Off) return s.charCodeAt(0);
 	}
 
 	/**
@@ -143,6 +143,6 @@ class StringExtension {
 		#if sinker_debug
 		if (s.length == 0) throw Errors.emptyString();
 		#end
-		return s.charCodeAt(s.length - 1);
+		@:nullSafety(Off) return s.charCodeAt(s.length - 1);
 	}
 }
