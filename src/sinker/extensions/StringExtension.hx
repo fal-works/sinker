@@ -126,23 +126,21 @@ class StringExtension {
 
 	/**
 		@return Character code of the first character.
-		`#if sinker_debug` Throws error if the string is empty.
+		Throws error if the string is empty.
 	**/
 	public static inline function firstCharCode(s: String): Int {
-		#if sinker_debug
-		if (s.length == 0) throw Errors.emptyString();
-		#end
-		@:nullSafety(Off) return s.charCodeAt(0);
+		final charCode = s.charCodeAt(0);
+		if (charCode == null) throw Errors.emptyString();
+		else return charCode;
 	}
 
 	/**
 		@return Character code of the last character.
-		`#if sinker_debug` Throws error if the string is empty.
+		Throws error if the string is empty.
 	**/
 	public static inline function lastCharCode(s: String): Int {
-		#if sinker_debug
-		if (s.length == 0) throw Errors.emptyString();
-		#end
-		@:nullSafety(Off) return s.charCodeAt(s.length - 1);
+		final charCode = s.charCodeAt(s.length - 1);
+		if (charCode == null) throw Errors.emptyString();
+		else return charCode;
 	}
 }

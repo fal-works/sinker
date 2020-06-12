@@ -13,10 +13,10 @@ class Errors {
 
 	public static function maybeUnwrap(): String
 		return "Failed to unwrap. Value is null.";
+	#end
 
 	public static function emptyString(): String
 		return "Invalid operation. String is empty.";
-	#end
 
 	public static function optionUnwrap(): String
 		return "Failed to unwrap. Value is null.";
