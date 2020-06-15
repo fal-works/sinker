@@ -102,12 +102,11 @@ abstract Maybe<T>(Null<T>) {
 	/**
 		Casts `this` to a non-null type.
 	**/
-	@:nullSafety(Off)
 	public extern inline function unwrap(): T {
 		#if sinker_debug
 		if (this == null) throw Errors.maybeUnwrap();
 		#end
-		return this;
+		@:nullSafety(Off) return cast this;
 	}
 
 	/**
