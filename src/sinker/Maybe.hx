@@ -106,7 +106,7 @@ abstract Maybe<T>(Null<T>) {
 		#if sinker_debug
 		if (this == null) throw Errors.maybeUnwrap();
 		#end
-		@:nullSafety(Off) return cast this;
+		return @:nullSafety(Off) cast this;
 	}
 
 	/**
