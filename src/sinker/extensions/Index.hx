@@ -14,3 +14,6 @@ typedef MaybeArrayExtension_ = sinker.extensions.MaybeArrayExtension;
 
 @:dox(hide)
 typedef StringExtension_ = sinker.extensions.StringExtension;
+
+@:dox(hide)
+typedef FunctionArrayExtension_ = sinker.extensions.FunctionArrayExtension;

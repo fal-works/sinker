@@ -71,8 +71,15 @@ The classes below have static utility methods for each type.
 
 Methods for static extension on:
 
-- `Array<T>`
 - `String`
+- `Array<T>`
+
+And some more additional methods for specific array types:
+
+- `Null<Array<T>>`
+- `Maybe<Array<T>>`
+- `Array<() -> Void>`
+- `Array<() -> Bool>`
 
 
 ## Callback functions
