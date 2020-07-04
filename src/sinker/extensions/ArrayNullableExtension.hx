@@ -6,6 +6,12 @@ using sinker.extensions.ArrayExtension;
 
 class ArrayNullableExtension {
 	/**
+		@return `this` if not null, otherwise a new empty array.
+	**/
+	public static extern inline function orNew<T>(_this: Null<Array<T>>): Array<T>
+		return if (_this != null) _this else [];
+
+	/**
 		@return Shallow copy of `this`, or `null` if `this` is `null`.
 	**/
 	public static inline function copyNullable<T>(_this: Null<Array<T>>): Null<Array<T>>
