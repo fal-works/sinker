@@ -6,7 +6,7 @@
 	"description": "Core utility library. Provides enhanced basic types such as UInt, Array<T>, Maybe<T> and some more.",
 	"version": "0.5.0-alpha",
 	"classPath": "src/",
-	"releasenote": "Add static extension for specific Array types.",
+	"releasenote": "Added method of Maybe<T>.",
 	"contributors": [
 		"fal-works"
 	],

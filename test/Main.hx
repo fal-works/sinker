@@ -22,6 +22,8 @@ class Main {
 		test(Floats.toInt(1.5) == 1);
 
 		test(Maybe.from(10).isSome());
+		test(Maybe.from(42) == 42);
+
 		test(Options.some(1).isSome());
 
 		final array: Array<Int> = [

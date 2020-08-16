@@ -26,6 +26,13 @@ abstract Maybe<T>(Null<T>) {
 		return new Maybe(func);
 
 	/**
+		@return `true` if `this` is some value and the value is equal to `other`.
+	**/
+	@:op(A == B) @:commutative
+	static extern inline function equalRaw<T>(_this: Maybe<T>, other: T): Bool
+		return _this.nullable() == other;
+
+	/**
 		@return `null` in `Maybe<T>` representation.
 	**/
 	public static extern inline function none<T>(): Maybe<T>
