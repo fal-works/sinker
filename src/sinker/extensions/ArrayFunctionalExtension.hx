@@ -42,14 +42,15 @@ class ArrayFunctionalExtension {
 	/**
 		@return The index of the first found element that is `element == value`.
 	**/
-	public static inline function indexOfFirst<T>(
+	public static inline function indexOfFirstIn<T>(
 		_this: Array<T>,
-		predicate: (element: T) -> Bool
+		predicate: (element: T) -> Bool,
+		start: UInt,
+		end: UInt
 	): MaybeUInt {
-		final len = _this.length;
 		var index = MaybeUInt.none;
-		var i = UInt.zero;
-		while (i < len) {
+		var i = start;
+		while (i < end) {
 			if (predicate(_this[i])) {
 				index = i;
 				break;
@@ -58,6 +59,16 @@ class ArrayFunctionalExtension {
 		}
 
 		return index;
+	}
+
+	/**
+		@return The index of the first found element that is `element == value`.
+	**/
+	public static inline function indexOfFirst<T>(
+		_this: Array<T>,
+		predicate: (element: T) -> Bool
+	): MaybeUInt {
+		return indexOfFirstIn(_this, predicate, UInt.zero, _this.length);
 	}
 
 	/**
