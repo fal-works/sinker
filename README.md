@@ -2,12 +2,12 @@
 
 Core utility library for Haxe.
 
-**Requires Haxe 4** (developed with v4.1.1).
+**Requires Haxe 4** (developed with v4.1.3).
 
 
 ## Caveats
 
-- Basically platform-independent, however the main target is Eval and HashLink.
+- Basically platform-independent, however the main targets are Eval and HashLink.
 - Not yet very well tested.
 - Quite unstable!
 
