@@ -82,18 +82,6 @@ And some more additional methods for specific array types:
 - `Array<() -> Bool>`
 
 
-## Callback functions
-
-The classes below have functions that can be used as callback.
-
-They are similar to the static methods in utility classes (see above), but are declared as variables and basically have only one argument.
-
-- `IntCallbacks`
-- `UIntCallbacks`
-- `FloatCallbacks`
-- `NullCallbacks`
-
-
 ## Compiler flags
 
 |flag|description|
