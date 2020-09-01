@@ -74,12 +74,12 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	public extern inline function splice(position: Int, length: Int): Array<T>
 		return this.splice(position, length);
 
-	public extern inline function indexOf(value: T, fromIndex: Int): UInt {
-		return new UInt(this.indexOf(value, fromIndex));
+	public extern inline function indexOf(value: T, fromIndex: Int): MaybeUInt {
+		return MaybeUInt.fromInt(this.indexOf(value, fromIndex));
 	}
 
-	public extern inline function lastIndexOf(value: T, fromIndex: Int): UInt {
-		return new UInt(this.lastIndexOf(value, fromIndex));
+	public extern inline function lastIndexOf(value: T, fromIndex: Int): MaybeUInt {
+		return MaybeUInt.fromInt(this.lastIndexOf(value, fromIndex));
 	}
 
 	public extern inline function copy(): Array<T>

@@ -153,7 +153,7 @@ class ArrayExtension {
 		@return `true` if the array contains an element that is `element == value`.
 	**/
 	public static inline function has<T>(_this: Array<T>, value: T): Bool
-		return _this.indexOf(value, 0) >= 0;
+		return _this.indexOf(value, 0).isSome();
 
 	public static inline function hasIn<T>(
 		_this: Array<T>,
@@ -188,7 +188,7 @@ class ArrayExtension {
 		defaultValue: T
 	): T {
 		final index = _this.indexOf(value, 0);
-		return if (index >= 0) _this[index] else defaultValue;
+		return if (index.isSome()) _this[index.unwrap()] else defaultValue;
 	}
 
 	/**
