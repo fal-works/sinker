@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"tags": ["utility"],
 	"description": "Core utility library. Provides enhanced basic types such as UInt, Array<T>, Maybe<T> and some more.",
-	"version": "0.5.0-alpha",
+	"version": "0.5.0",
 	"classPath": "src/",
 	"releasenote": "Added/improved some methods of Array<T> and Maybe<T>. Removed Callbacks classes.",
 	"contributors": [
