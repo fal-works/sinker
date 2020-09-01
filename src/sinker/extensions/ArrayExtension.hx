@@ -66,6 +66,12 @@ class ArrayExtension {
 		return getLastSafe(_this);
 
 	/**
+		Safely gets the element at `index`.
+	**/
+	public static inline function tryGet<T>(_this: Array<T>, index: UInt): Maybe<T>
+		return Maybe.from(if (index < _this.length) _this[index] else null);
+
+	/**
 		Fills the array with `value` from `startIndex` to (but not including) `endIndex`.
 		@return The filled array.
 	**/
