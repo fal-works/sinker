@@ -105,6 +105,7 @@ class StringExtension {
 	/**
 		@return A string where the first character is changed to upper case.
 	**/
+	@:deprecated
 	public static inline function camelToPascal(s: String): String {
 		return switch (s.length) {
 			case 0: s;
@@ -116,6 +117,7 @@ class StringExtension {
 	/**
 		@return A string where the first character is changed to lower case.
 	**/
+	@:deprecated
 	public static inline function pascalToCamel(s: String): String {
 		return switch (s.length) {
 			case 0: s;
@@ -128,6 +130,7 @@ class StringExtension {
 		@return Character code of the first character.
 		Throws error if the string is empty.
 	**/
+	@:deprecated
 	public static inline function firstCharCode(s: String): Int {
 		final charCode = s.charCodeAt(0);
 		if (charCode == null) throw Errors.emptyString();
@@ -138,6 +141,7 @@ class StringExtension {
 		@return Character code of the last character.
 		Throws error if the string is empty.
 	**/
+	@:deprecated
 	public static inline function lastCharCode(s: String): Int {
 		final charCode = s.charCodeAt(s.length - 1);
 		if (charCode == null) throw Errors.emptyString();
