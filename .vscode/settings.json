@@ -10,5 +10,20 @@
     "commentprefix": "\t",
     "commentend": "**/",
     "autoPrefixOnEnter": false
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": false,
+    "editor.tabSize": 4,
+    "editor.renderWhitespace": "boundary",
+    "files.trimTrailingWhitespace": false
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.json-language-features"
   }
 }
