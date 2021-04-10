@@ -78,7 +78,7 @@ abstract Option<T>(StdOption<T>) from StdOption<T> to StdOption<T> {
 	/**
 		Runs `callback` only if `this` is not `None`.
 	**/
-	public extern inline function may(callback: T->Void): Void {
+	public extern inline function may(callback: T -> Void): Void {
 		switch this {
 			case Some(value): callback(value);
 			case None:
@@ -88,7 +88,7 @@ abstract Option<T>(StdOption<T>) from StdOption<T> to StdOption<T> {
 	/**
 		Applies `callback` to `this` and returns another `Option` value.
 	**/
-	public extern inline function map<U>(callback: T->U): Option<U> {
+	public extern inline function map<U>(callback: T -> U): Option<U> {
 		return switch this {
 			case Some(value): Some(callback(value));
 			case None: None;

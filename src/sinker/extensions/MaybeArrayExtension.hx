@@ -1,6 +1,6 @@
 package sinker.extensions;
 
-import sinker.*;
+import sinker.Array;
 
 /**
 	Functions for `Maybe<Array<T>>`.

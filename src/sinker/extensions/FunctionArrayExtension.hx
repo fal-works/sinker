@@ -1,5 +1,8 @@
 package sinker.extensions;
 
+/**
+	Static extension for `Array<() -> T>`.
+**/
 class FunctionArrayExtension {
 	/**
 		Runs all functions in `this` array.

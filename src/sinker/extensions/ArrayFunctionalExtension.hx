@@ -1,6 +1,7 @@
 package sinker.extensions;
 
-import sinker.*;
+import sinker.Array;
+import sinker.UInt;
 
 using sinker.extensions.ArrayExtension;
 using sinker.extensions.ArrayFunctionalExtension;
@@ -12,7 +13,7 @@ class ArrayFunctionalExtension {
 	/**
 		Runs a given function for each element.
 	**/
-	public static inline function forEach<T>(_this: Array<T>, callback: T->Void): Void {
+	public static inline function forEach<T>(_this: Array<T>, callback: T -> Void): Void {
 		final len = _this.length;
 		var i = UInt.zero;
 		while (i < len) {
@@ -27,7 +28,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function populate<T>(
 		_this: Array<T>,
-		factory: Void->T
+		factory: Void -> T
 	): Array<T> {
 		final len = _this.length;
 		var i = UInt.zero;
@@ -76,7 +77,7 @@ class ArrayFunctionalExtension {
 		@param predicate Function that returns `true` if a given element meets the condition.
 		@return `true` if found.
 	**/
-	public static inline function hasAny<T>(_this: Array<T>, predicate: T->Bool): Bool {
+	public static inline function hasAny<T>(_this: Array<T>, predicate: T -> Bool): Bool {
 		final len = _this.length;
 		var found = false;
 		var i = UInt.zero;
@@ -100,7 +101,7 @@ class ArrayFunctionalExtension {
 	public static inline function hasEqualIn<T>(
 		_this: Array<T>,
 		value: T,
-		equalityPredicate: T->T->Bool,
+		equalityPredicate: T -> T -> Bool,
 		start: UInt,
 		end: UInt
 	): Bool {
@@ -126,7 +127,7 @@ class ArrayFunctionalExtension {
 	public static inline function hasEqual<T>(
 		_this: Array<T>,
 		value: T,
-		equalityPredicate: T->T->Bool
+		equalityPredicate: T -> T -> Bool
 	): Bool {
 		return hasEqualIn(_this, value, equalityPredicate, UInt.zero, _this.length);
 	}
@@ -138,7 +139,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function findFirst<T>(
 		_this: Array<T>,
-		predicate: T->Bool,
+		predicate: T -> Bool,
 		defaultValue: T
 	): T {
 		var found = defaultValue;
@@ -166,8 +167,8 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function forFirst<T>(
 		_this: Array<T>,
-		predicate: T->Bool,
-		processCallback: T->Void
+		predicate: T -> Bool,
+		processCallback: T -> Void
 	): Bool {
 		var element: T;
 		var found = false;
@@ -195,7 +196,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function mapFirst<T, S>(
 		_this: Array<T>,
-		tryMapCallback: T->Maybe<S>
+		tryMapCallback: T -> Maybe<S>
 	): Maybe<S> {
 		var found: Maybe<S> = Maybe.none();
 
@@ -219,7 +220,10 @@ class ArrayFunctionalExtension {
 		@param predicate Function that returns `true` if a given element meets the condition.
 		@return `true` if any removed.
 	**/
-	public static inline function removeAll<T>(_this: Array<T>, predicate: T->Bool): Bool {
+	public static inline function removeAll<T>(
+		_this: Array<T>,
+		predicate: T -> Bool
+	): Bool {
 		final len = _this.length;
 		var readIndex = UInt.zero;
 		var writeIndex = UInt.zero;
@@ -247,7 +251,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function removeFirst<T>(
 		_this: Array<T>,
-		predicate: T->Bool,
+		predicate: T -> Bool,
 		defaultValue: T
 	): T {
 		var foundIndex = MaybeUInt.none;
@@ -275,8 +279,8 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function filterForEach<T>(
 		_this: Array<T>,
-		predicate: T->Bool,
-		processCallback: T->Void
+		predicate: T -> Bool,
+		processCallback: T -> Void
 	): Bool {
 		var element: T;
 		var found = false;
@@ -304,7 +308,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function filterMap<T, S>(
 		_this: Array<T>,
-		tryMapCallback: T->Maybe<S>
+		tryMapCallback: T -> Maybe<S>
 	): Array<S> {
 		var newArray: Array<S> = [];
 
@@ -328,7 +332,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function deduplicateWith<T>(
 		_this: Array<T>,
-		equalityPredicate: T->T->Bool
+		equalityPredicate: T -> T -> Bool
 	): Void {
 		final length = _this.length;
 
@@ -363,7 +367,7 @@ class ArrayFunctionalExtension {
 	**/
 	public static inline function copyDeduplicatedWith<T>(
 		_this: Array<T>,
-		equalityPredicate: T->T->Bool
+		equalityPredicate: T -> T -> Bool
 	): Array<T> {
 		final length = _this.length;
 

@@ -1,12 +1,16 @@
 package sinker.extensions;
 
-import sinker.*;
+import sinker.Array;
+import sinker.UInt;
 #if sinker_debug
 import sinker.errors.ArrayErrors;
 #end
 
 using sinker.extensions.ArrayFunctionalExtension;
 
+/**
+	Statid extension for `Array`.
+**/
 class ArrayExtension {
 	/**
 		@return `true` if `this.length` is zero.
@@ -114,13 +118,14 @@ class ArrayExtension {
 	): Void {
 		#if sinker_debug
 		if (sourceIndex + rangeLength > _this.length
-			|| destinationIndex + rangeLength > _this.length)
+			|| destinationIndex + rangeLength > _this.length) {
 			throw ArrayErrors.blitInternalBounds(
 				_this,
 				sourceIndex,
 				destinationIndex,
 				rangeLength
 			);
+		}
 		#end
 
 		#if cpp
@@ -141,7 +146,8 @@ class ArrayExtension {
 				--k;
 				_this[k] = _this[i];
 			}
-		} else if (sourceIndex > destinationIndex) {
+		}
+		else if (sourceIndex > destinationIndex) {
 			var i = sourceIndex;
 			var k = destinationIndex;
 			final endI = sourceIndex + rangeLength;

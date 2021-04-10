@@ -1,6 +1,9 @@
 package sinker.errors;
 
 #if sinker_debug
+/**
+	Functions for generating error messages related to `Array`.
+**/
 class ArrayErrors {
 	public static function index(array: Array<Dynamic>, index: UInt): String
 		return 'Index $index is out of bounds. Array length: ${array.length}';

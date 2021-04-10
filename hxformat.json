@@ -1,4 +1,5 @@
 {
+	"emptyLines": {},
 	"indentation": {
 		"character": "tab",
 		"tabWidth": 2,
@@ -14,6 +15,8 @@
 		"whileBody": "keep"
 	},
 	"whitespace": {
+		"functionTypeHaxe3Policy": "around",
+		"functionTypeHaxe4Policy": "around",
 		"typeHintColonPolicy": "onlyAfter",
 		"bracesConfig": {
 			"anonTypeBraces": {

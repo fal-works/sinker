@@ -3,10 +3,11 @@ package sinker.internal;
 #if macro
 import haxe.macro.Compiler;
 
+/**
+	Initialization macro for sinker.
+**/
 class Initialization {
 	/**
-		Initialization macro for sinker.
-
 		Sets compilation flag `sinker_debug` if it is not set and `debug` is set.
 	**/
 	static function run() {

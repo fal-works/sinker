@@ -1,9 +1,12 @@
 package sinker.extensions;
 
-import sinker.*;
+import sinker.Array;
 
 using sinker.extensions.ArrayExtension;
 
+/**
+	Static extension for `Null<Array<T>>`.
+**/
 class ArrayNullableExtension {
 	/**
 		@return `this` if not null, otherwise a new empty array.

@@ -15,7 +15,7 @@ class Arrays {
 		#if cpp
 		return cpp.NativeArray.create(size);
 		#else
-		final newArray = new Array<T>();
+		final newArray: Array<T> = [];
 		newArray.resize(size);
 		return newArray;
 		#end
@@ -26,7 +26,7 @@ class Arrays {
 
 		If `source` and `destination` are the same, use `blitInternal()` instead.
 	**/
-	public inline static function blit<T>(
+	public static inline function blit<T>(
 		source: Array<T>,
 		sourcePosition: UInt,
 		destination: Array<T>,
@@ -37,7 +37,7 @@ class Arrays {
 		if (source == destination)
 			throw ArrayErrors.blitSame();
 		if (sourcePosition + rangeLength > source.length
-			|| destinationPosition + rangeLength > destination.length)
+			|| destinationPosition + rangeLength > destination.length) {
 			throw ArrayErrors.blitBounds(
 				source,
 				sourcePosition,
@@ -45,6 +45,7 @@ class Arrays {
 				destinationPosition,
 				rangeLength
 			);
+		}
 		#end
 
 		#if cpp
