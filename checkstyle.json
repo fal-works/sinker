@@ -21,15 +21,6 @@
 			"props": {}
 		},
 		{
-			"type": "ArrowFunction",
-			"props": {
-				"allowReturn": false,
-				"allowFunction": false,
-				"allowCurlyBody": false,
-				"allowSingleArgParens": false
-			}
-		},
-		{
 			"type": "AvoidIdentifier",
 			"props": {
 				"avoidIdentifiers": []
@@ -456,10 +447,6 @@
 			}
 		},
 		{
-			"type": "Trace",
-			"props": {}
-		},
-		{
 			"type": "TrailingWhitespace",
 			"props": {}
 		},
@@ -467,18 +454,6 @@
 			"type": "Type",
 			"props": {
 				"ignoreEnumAbstractValues": true
-			}
-		},
-		{
-			"type": "TypeDocComment",
-			"props": {
-				"tokens": [
-					"ABSTRACT_DEF",
-					"CLASS_DEF",
-					"ENUM_DEF",
-					"INTERFACE_DEF",
-					"TYPEDEF_DEF"
-				]
 			}
 		},
 		{
@@ -495,10 +470,6 @@
 		},
 		{
 			"type": "UnusedLocalVar",
-			"props": {}
-		},
-		{
-			"type": "VariableInitialisation",
 			"props": {}
 		},
 		{
