@@ -54,14 +54,6 @@
 			}
 		},
 		{
-			"type": "CodeSimilarity",
-			"props": {
-				"severityIdentical": "WARNING",
-				"thresholdIdentical": 60,
-				"thresholdSimilar": 120
-			}
-		},
-		{
 			"type": "ConditionalCompilation",
 			"props": {
 				"policy": "aligned",
