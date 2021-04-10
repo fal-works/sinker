@@ -9,6 +9,9 @@ enum Result<T> {
 	Failed(message: String);
 }
 
+/**
+	Static extension for `Result`.
+**/
 class ResultExtension {
 	/**
 		@return `true` if `this` is `Ok`.

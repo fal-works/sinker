@@ -95,13 +95,13 @@ abstract Maybe<T>(Null<T>) {
 	/**
 		Runs `callback` only if `this` is not null.
 	**/
-	public extern inline function may(callback: T->Void): Void
+	public extern inline function may(callback: T -> Void): Void
 		if (this != null) callback(this);
 
 	/**
 		Applies `callback` to `this` and returns another `Maybe` value.
 	**/
-	public extern inline function map<U>(callback: T->U): Maybe<U>
+	public extern inline function map<U>(callback: T -> U): Maybe<U>
 		return Maybe.from(if (this != null) callback(this) else null);
 
 	/**
@@ -111,7 +111,9 @@ abstract Maybe<T>(Null<T>) {
 		#if sinker_debug
 		if (this == null) throw Errors.maybeUnwrap();
 		#end
-		return @:nullSafety(Off) cast this;
+
+		@:nullSafety(Off)
+		return cast this;
 	}
 
 	/**

@@ -4,9 +4,12 @@ import sinker.errors.Errors;
 
 using sinker.extensions.StringExtension;
 
+/**
+	Static extension for `String`.
+**/
 class StringExtension {
-	static final dot = ".";
-	static final slash = "/";
+	static final dot: String = ".";
+	static final slash: String = "/";
 
 	/**
 		Similar to `indexOf()` but returns the index in `MaybeUInt` representation.

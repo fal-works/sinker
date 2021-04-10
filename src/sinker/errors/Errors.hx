@@ -1,5 +1,8 @@
 package sinker.errors;
 
+/**
+	Functions for generating error messages.
+**/
 class Errors {
 	#if sinker_debug
 	public static function uintFromInt(value: Int): String

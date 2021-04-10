@@ -1,19 +1,19 @@
 package sinker.extensions;
 
 @:dox(hide)
-typedef ArrayExtension_ = sinker.extensions.ArrayExtension;
+typedef ExportedArrayExtension = sinker.extensions.ArrayExtension;
 
 @:dox(hide)
-typedef ArrayFunctionalExtension_ = sinker.extensions.ArrayFunctionalExtension;
+typedef ExportedArrayFunctionalExtension = sinker.extensions.ArrayFunctionalExtension;
 
 @:dox(hide)
-typedef ArrayNullableExtension_ = sinker.extensions.ArrayNullableExtension;
+typedef ExportedArrayNullableExtension = sinker.extensions.ArrayNullableExtension;
 
 @:dox(hide)
-typedef MaybeArrayExtension_ = sinker.extensions.MaybeArrayExtension;
+typedef ExportedMaybeArrayExtension = sinker.extensions.MaybeArrayExtension;
 
 @:dox(hide)
-typedef StringExtension_ = sinker.extensions.StringExtension;
+typedef ExportedStringExtension = sinker.extensions.StringExtension;
 
 @:dox(hide)
-typedef FunctionArrayExtension_ = sinker.extensions.FunctionArrayExtension;
+typedef ExportedFunctionArrayExtension = sinker.extensions.FunctionArrayExtension;

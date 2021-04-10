@@ -86,7 +86,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	public extern inline function copy(): Array<T>
 		return this.copy();
 
-	public extern inline function map<S>(callback: T->S): Array<S> {
+	public extern inline function map<S>(callback: T -> S): Array<S> {
 		#if (cpp && !cppia)
 		return this.map(f);
 		#else
@@ -102,7 +102,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 		#end
 	}
 
-	public extern inline function filter(predicate: T->Bool): Array<T> {
+	public extern inline function filter(predicate: T -> Bool): Array<T> {
 		final newArray: Array<T> = [];
 		final len = length;
 		var i = UInt.zero;
