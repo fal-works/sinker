@@ -11,6 +11,10 @@
     "commentend": "**/",
     "autoPrefixOnEnter": false
   },
+  "haxecheckstyle.sourceFolders": [
+    "src",
+    "test"
+  ],
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.quickSuggestions": false,
