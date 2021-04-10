@@ -11,8 +11,6 @@ import sinker.errors.Errors;
 **/
 @:notNull
 abstract Maybe<T>(Null<T>) {
-	static final noneString = "none";
-
 	/**
 		Casts any object to `Maybe<T>`.
 	**/
