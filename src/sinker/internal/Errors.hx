@@ -1,4 +1,4 @@
-package sinker.errors;
+package sinker.internal;
 
 /**
 	Functions for generating error messages.

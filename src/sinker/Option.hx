@@ -1,7 +1,7 @@
 package sinker;
 
 import haxe.ds.Option as StdOption;
-import sinker.errors.Errors;
+import sinker.internal.Errors;
 import sinker.errors.UnwrapError;
 
 /**

@@ -1,6 +1,6 @@
 package sinker.extensions;
 
-import sinker.errors.Errors;
+import sinker.internal.Errors;
 
 using sinker.extensions.StringExtension;
 

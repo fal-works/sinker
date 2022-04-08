@@ -3,7 +3,7 @@ package sinker.extensions;
 import sinker.Array;
 import sinker.UInt;
 #if sinker_debug
-import sinker.errors.ArrayErrors;
+import sinker.internal.ArrayErrors;
 import sinker.errors.RangeError;
 #end
 

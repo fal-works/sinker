@@ -1,6 +1,6 @@
 package sinker;
 
-import sinker.errors.Errors;
+import sinker.internal.Errors;
 import sinker.errors.CastError;
 import sinker.errors.UnwrapError;
 

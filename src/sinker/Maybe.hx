@@ -2,7 +2,7 @@ package sinker;
 
 import sinker.errors.UnwrapError;
 import haxe.Constraints.Function;
-import sinker.errors.Errors;
+import sinker.internal.Errors;
 
 /**
 	Wrapper of `Null<T>` for:
