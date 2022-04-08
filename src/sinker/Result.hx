@@ -1,4 +1,5 @@
 package sinker;
+import sinker.errors.UnwrapError;
 
 /**
 	Type that represents either success (`Ok`) or failure (`Failed`).
@@ -30,12 +31,13 @@ class ResultExtension {
 		return !isOk(_this);
 
 	/**
-		@return The value if `Ok`. Throws error message if `Failed`.
+		@return The value if `Ok`.
+		@throws `UnwrapError` with the error message if `Failed`.
 	**/
 	public static extern inline function unwrap<T>(_this: Result<T>): T {
 		return switch _this {
 			case Ok(value): value;
-			case Failed(message): throw message;
+			case Failed(message): throw new UnwrapError(message);
 		}
 	}
 }

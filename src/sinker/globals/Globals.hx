@@ -18,7 +18,7 @@ class Globals {
 
 	/**
 		Casts `Int` to `UInt`.
-		`#if sinker_debug` throws error if negative.
+		`#if sinker_debug` throws `CastError` if negative.
 	**/
 	public static extern inline function uint(value: Int): UInt
 		return UInt.fromInt(value);

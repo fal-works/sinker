@@ -2,6 +2,7 @@ package sinker;
 
 #if sinker_debug
 import sinker.errors.ArrayErrors;
+import sinker.errors.RangeError;
 #end
 
 /**
@@ -35,16 +36,16 @@ class Arrays {
 	): Void {
 		#if sinker_debug
 		if (source == destination)
-			throw ArrayErrors.blitSame();
+			throw new Error(ArrayErrors.blitSame());
 		if (sourcePosition + rangeLength > source.length
 			|| destinationPosition + rangeLength > destination.length) {
-			throw ArrayErrors.blitBounds(
+			throw new RangeError(ArrayErrors.blitBounds(
 				source,
 				sourcePosition,
 				destination,
 				destinationPosition,
 				rangeLength
-			);
+			));
 		}
 		#end
 
@@ -72,9 +73,14 @@ class Arrays {
 	): Void {
 		#if sinker_debug
 		if (source == destination)
-			throw ArrayErrors.blitSame();
-		if (rangeLength > source.length || rangeLength > destination.length)
-			throw ArrayErrors.blitZeroBounds(source, destination, rangeLength);
+			throw new Error(ArrayErrors.blitSame());
+		if (rangeLength > source.length || rangeLength > destination.length) {
+			throw new RangeError(ArrayErrors.blitZeroBounds(
+				source,
+				destination,
+				rangeLength
+			));
+		}
 		#end
 
 		#if cpp

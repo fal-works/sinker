@@ -1,5 +1,6 @@
 package sinker;
 
+import sinker.errors.UnwrapError;
 import haxe.Constraints.Function;
 import sinker.errors.Errors;
 
@@ -106,10 +107,12 @@ abstract Maybe<T>(Null<T>) {
 
 	/**
 		Casts `this` to a non-null type.
+
+		`#if sinker_debug` throws `UnwrapError` if null.
 	**/
 	public extern inline function unwrap(): T {
 		#if sinker_debug
-		if (this == null) throw Errors.maybeUnwrap();
+		if (this == null) throw new UnwrapError(Errors.maybeUnwrap());
 		#end
 
 		@:nullSafety(Off)

@@ -1,6 +1,7 @@
 package sinker;
 
 import sinker.errors.Errors;
+import sinker.errors.CastError;
 
 /**
 	Unsigned integer based on `Int`.
@@ -21,11 +22,11 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 
 	/**
 		Casts `Int` to `UInt`.
-		`#if sinker_debug` throws error if negative.
+		`#if sinker_debug` throws `CastError` if negative.
 	**/
 	@:from public static extern inline function fromInt(v: Int): UInt {
 		#if sinker_debug
-		if (v < 0) throw Errors.uintFromInt(v);
+		if (v < 0) throw new CastError(Errors.uintFromInt(v));
 		#end
 		return new UInt(v);
 	}

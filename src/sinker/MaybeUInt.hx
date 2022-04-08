@@ -1,6 +1,8 @@
 package sinker;
 
 import sinker.errors.Errors;
+import sinker.errors.CastError;
+import sinker.errors.UnwrapError;
 
 /**
 	Represents either an `UInt` value or the absense of valid value.
@@ -25,13 +27,14 @@ abstract MaybeUInt(UInt) from UInt {
 		Casts `value` to `MaybeUInt`.
 		Value `-1` corresponds to `MaybeUInt.none`.
 
-		`#if sinker_debug` throws error if `value` is less than `-1`.
+		`#if sinker_debug` throws `CastError` if `value` is less than `-1`.
+
 		@param value Any integer that is `-1` or greater.
 	**/
 	@:from public static extern inline function fromInt(value: Int): MaybeUInt {
 		#if sinker_debug
 		if (-1 <= value) return cast value;
-		else throw Errors.maybeUIntFromInt(value);
+		else throw new CastError(Errors.maybeUIntFromInt(value));
 		#else
 		return cast value;
 		#end
@@ -50,11 +53,12 @@ abstract MaybeUInt(UInt) from UInt {
 		return from(this) == none;
 
 	/**
-		@return The value of `this`. Throws error if `this.isNone()`.
+		@return The value of `this`.
+		@throws `UnwrapError` if `this.isNone()`.
 	**/
 	public extern inline function unwrap(): UInt {
 		#if sinker_debug
-		if (isNone()) throw Errors.maybeUIntUnwrap();
+		if (isNone()) throw new UnwrapError(Errors.maybeUIntUnwrap());
 		#end
 		return this;
 	}

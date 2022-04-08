@@ -131,23 +131,23 @@ class StringExtension {
 
 	/**
 		@return Character code of the first character.
-		Throws error if the string is empty.
+		@throws `Error` if the string is empty.
 	**/
 	@:deprecated
 	public static inline function firstCharCode(s: String): Int {
 		final charCode = s.charCodeAt(0);
-		if (charCode == null) throw Errors.emptyString();
+		if (charCode == null) throw new Error(Errors.emptyString());
 		else return charCode;
 	}
 
 	/**
 		@return Character code of the last character.
-		Throws error if the string is empty.
+		@throws `Error` if the string is empty.
 	**/
 	@:deprecated
 	public static inline function lastCharCode(s: String): Int {
 		final charCode = s.charCodeAt(s.length - 1);
-		if (charCode == null) throw Errors.emptyString();
+		if (charCode == null) throw new Error(Errors.emptyString());
 		else return charCode;
 	}
 }
