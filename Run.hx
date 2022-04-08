@@ -1,6 +1,6 @@
 class Run {
 	static function main() {
-		#if sys
+		#if (sys || hxnodejs)
 		final libraryName: String = "sinker";
 		final version = haxe.macro.Compiler.getDefine("sinker");
 
