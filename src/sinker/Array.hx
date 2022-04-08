@@ -13,6 +13,7 @@ import sinker.errors.ArrayErrors;
 **/
 @:transitive
 @:forward(join, reverse, sort, toString, unShift, insert, remove, iterator)
+@:transitive
 abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 	public var length(get, never): UInt;
 

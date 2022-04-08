@@ -9,7 +9,7 @@ import sinker.errors.Errors;
 	- avoiding implicit unwrapping
 	- adding some utility methods
 **/
-@:notNull
+@:notNull @:transitive
 abstract Maybe<T>(Null<T>) {
 	/**
 		Casts any object to `Maybe<T>`.

@@ -7,6 +7,7 @@ import sinker.errors.Errors;
 
 	Unlike `Null<UInt>`, `MaybeUInt` does not require boxing.
 **/
+@:notNull @:transitive
 abstract MaybeUInt(UInt) from UInt {
 	/**
 		A special value that represents the absense of valid `UInt` value.

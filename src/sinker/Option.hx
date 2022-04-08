@@ -6,7 +6,7 @@ import sinker.errors.Errors;
 /**
 	Wrapper of `haxe.ds.Option` with some additional methods.
 **/
-@:notNull
+@:notNull @:transitive
 abstract Option<T>(StdOption<T>) from StdOption<T> to StdOption<T> {
 	/**
 		Casts `this` to `haxe.ds.Option`.

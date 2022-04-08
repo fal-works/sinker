@@ -7,7 +7,7 @@ import sinker.errors.Errors;
 	- `#if sinker_debug` checks against negative when casting from `Int`.
 	- Does not check against overflow.
 **/
-@:notNull
+@:notNull @:transitive
 abstract UInt(Int) to Int from std.UInt to std.UInt {
 	/**
 		Value `0` in `UInt` representation.
