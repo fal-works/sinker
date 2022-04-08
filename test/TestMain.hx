@@ -1,6 +1,6 @@
 function main() {
 	printRuntimeInfo();
-	sinker.Main.main();
+	sinker.Test.run();
 }
 
 function printRuntimeInfo() {

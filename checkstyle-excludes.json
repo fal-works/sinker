@@ -2,13 +2,13 @@
 	"version": 1,
 	"path": "RELATIVE_TO_SOURCE",
 	"all": [
-		"sinker/Main"
+		"sinker/Test"
 	],
 	"AvoidStarImport": [
-		"sinker/Main"
+		"sinker/Test"
 	],
 	"MagicNumber": [
-		"sinker/Main"
+		"sinker/Test"
 	],
 	"TypeDocComment": [
 		"sinker/extensions/Index"

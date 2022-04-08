@@ -6,4 +6,4 @@
 --macro nullSafety("sinker", Strict)
 --macro sinker.internal.Initialization.run()
 
---main Main
+--main TestMain
