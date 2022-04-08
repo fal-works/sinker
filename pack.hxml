@@ -1,0 +1,1 @@
+--cmd 7z a -tzip lib.zip @public-files.txt
