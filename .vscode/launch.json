@@ -1,0 +1,60 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Eval",
+			"type": "haxe-eval",
+			"request": "launch",
+			"args": [
+				"hxml/compile/eval.hxml",
+			],
+		},
+		{
+			"name": "Eval (Debug)",
+			"type": "haxe-eval",
+			"request": "launch",
+			"args": [
+				"--debug",
+				"hxml/compile/eval.hxml",
+			],
+		},
+		{
+			"name": "HashLink/JIT",
+			"type": "hl",
+			"request": "launch",
+			"preLaunchTask": "HashLink/JIT",
+			"cwd": "${workspaceFolder}",
+			"program": "out/test.hl",
+		},
+		{
+			"name": "HashLink/JIT (Debug)",
+			"type": "hl",
+			"request": "launch",
+			"preLaunchTask": "HashLink/JIT (Debug)",
+			"cwd": "${workspaceFolder}",
+			"program": "out/test.hl",
+		},
+		{
+			"name": "JavaScript",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/out/test.js",
+			"preLaunchTask": "JavaScript",
+			"sourceMaps": true,
+			"outFiles": [
+				"${workspaceFolder}/out/*.js",
+			],
+		},
+		{
+			"name": "JavaScript (Debug)",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/out/test.js",
+			"preLaunchTask": "JavaScript (Debug)",
+			"sourceMaps": true,
+			"outFiles": [
+				"${workspaceFolder}/out/*.js",
+			],
+		},
+	]
+}

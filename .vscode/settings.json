@@ -6,13 +6,45 @@
   "files.trimFinalNewlines": true,
   "files.insertFinalNewline": true,
   "haxe.configurations": [
-    [
-      "hxml/compile/eval.hxml",
-      "--debug"
-    ],
-    [
-      "hxml/compile/eval.hxml"
-    ],
+    {
+      "label": "Eval",
+      "args": [
+        "hxml/compile/eval.hxml",
+      ]
+    },
+    {
+      "label": "Eval (Debug)",
+      "args": [
+        "--debug",
+        "hxml/compile/eval.hxml",
+      ]
+    },
+    {
+      "label": "HashLink/JIT",
+      "args": [
+        "hxml/compile/hl-jit.hxml",
+      ]
+    },
+    {
+      "label": "HashLink/JIT (Debug)",
+      "args": [
+        "--debug",
+        "hxml/compile/hl-jit.hxml",
+      ]
+    },
+    {
+      "label": "JavaScript",
+      "args": [
+        "hxml/compile/js.hxml",
+      ]
+    },
+    {
+      "label": "JavaScript (Debug)",
+      "args": [
+        "--debug",
+        "hxml/compile/js.hxml",
+      ]
+    },
   ],
   "haxecheckstyle.sourceFolders": [
     "src",

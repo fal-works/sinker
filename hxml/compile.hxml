@@ -1,5 +1,3 @@
-# Common arguments
-
 --class-path src
 --class-path test
 --class-path scripts

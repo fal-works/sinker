@@ -1,41 +1,199 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Build and Test",
-      "type": "hxml",
-      "file": "hl-jit-test.hxml",
-      "problemMatcher": [
-        "$haxe-absolute",
-        "$haxe",
-        "$haxe-error"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    },
-    {
-      "label": "Build",
-      "type": "hxml",
-      "file": "hl-jit.hxml",
-      "problemMatcher": [
-        "$haxe-absolute",
-        "$haxe",
-        "$haxe-error"
-      ],
-      "group": "build"
-    },
-    {
-      "label": "Eval",
-      "type": "hxml",
-      "file": "eval-test.hxml",
-      "problemMatcher": [
-        "$haxe-absolute",
-        "$haxe",
-        "$haxe-error"
-      ],
-      "group": "build"
-    }
-  ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "haxe",
+			"args": "active configuration",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Eval",
+			"type": "shell",
+			"command": "haxe",
+			"args": [
+				"hxml/compile/eval.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+		},
+		{
+			"label": "Test Eval",
+			"type": "shell",
+			"command": "haxe",
+			"args": [
+				"hxml/test/eval.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+			"group": "test",
+		},
+		{
+			"label": "Eval (Debug)",
+			"type": "shell",
+			"command": "haxe",
+			"args": [
+				"--debug",
+				"hxml/compile/eval.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+		},
+		{
+			"label": "Test Eval (Debug)",
+			"type": "shell",
+			"command": "haxe",
+			"args": [
+				"--debug",
+				"hxml/test/eval.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+			"group": "test",
+		},
+		{
+			"label": "JavaScript",
+			"type": "shell",
+			"command": "haxe",
+			"args": [
+				"hxml/compile/js.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+		},
+		{
+			"label": "Test JavaScript",
+			"type": "shell",
+			"command": "haxe",
+			"args": [
+				"hxml/test/js.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+			"group": "test",
+		},
+		{
+			"label": "JavaScript (Debug)",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"haxe",
+				"--debug",
+				"hxml/compile/js.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+		},
+		{
+			"label": "Test JavaScript (Debug)",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"haxe",
+				"--debug",
+				"hxml/test/js.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+			"group": "test",
+		},
+		{
+			"label": "HashLink/JIT",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"haxe",
+				"hxml/compile/hl-jit.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+		},
+		{
+			"label": "Test HashLink/JIT",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"haxe",
+				"hxml/test/hl-jit.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+			"group": "test",
+		},
+		{
+			"label": "HashLink/JIT (Debug)",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"haxe",
+				"--debug",
+				"hxml/compile/hl-jit.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+		},
+		{
+			"label": "Test HashLink/JIT (Debug)",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"haxe",
+				"--debug",
+				"hxml/test/hl-jit.hxml",
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				// "$haxe-trace",
+			],
+			"group": "test",
+		},
+	]
 }
