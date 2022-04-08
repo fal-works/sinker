@@ -1,0 +1,2 @@
+hxml/compile/js.hxml
+--cmd node out/test.js

@@ -1,0 +1,2 @@
+hxml/compile/common.hxml
+--js out/test.js

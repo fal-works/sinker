@@ -1,0 +1,11 @@
+# Common arguments
+
+--class-path src
+--class-path test
+--class-path scripts
+--dce full
+
+--macro nullSafety("sinker", Strict)
+--macro sinker.internal.Initialization.run()
+
+--main Main

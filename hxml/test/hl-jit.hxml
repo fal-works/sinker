@@ -1,0 +1,2 @@
+hxml/compile/hl-jit.hxml
+--cmd hl out/test.hl
