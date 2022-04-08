@@ -2,7 +2,7 @@
 
 Core utility library for Haxe.
 
-**Requires Haxe 4** (developed with v4.1.3).
+**Requires Haxe 4** (developed with v4.2.5).
 
 
 ## Caveats
@@ -55,6 +55,7 @@ Abstract over standard `haxe.ds.Option<T>` with some additional methods.
 ### Result<T>
 
 Enum, either `Ok(value: T)` or `Failed(message: String)`. Also has some additional methods.
+
 
 ## Utility classes
 
