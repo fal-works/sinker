@@ -2,7 +2,7 @@
 	Packs files to be published.
 	Requires that the `7z` command is available.
 **/
-function main() {
+private function main() {
 	final zipName = "lib.zip";
 	final fileList = "public-files.txt";
 
