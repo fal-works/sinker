@@ -4,6 +4,9 @@
   },
   "editor.tabSize": 2,
   "editor.insertSpaces": false,
+  "editor.codeActionsOnSave": {
+    "source.sortImports": true
+  },
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,

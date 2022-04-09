@@ -1,8 +1,8 @@
 package sinker;
 
 #if sinker_debug
-import sinker.internal.ArrayErrors;
 import sinker.errors.RangeError;
+import sinker.internal.ArrayErrors;
 #end
 
 /**

@@ -1,8 +1,8 @@
 package sinker;
 
 import haxe.ds.Option as StdOption;
-import sinker.internal.Errors;
 import sinker.errors.UnwrapError;
+import sinker.internal.Errors;
 
 /**
 	Wrapper of `haxe.ds.Option` with some additional methods.

@@ -1,8 +1,10 @@
 package sinker;
 
-import sinker.errors.UnwrapError;
 import haxe.Constraints.Function;
+#if sinker_debug
+import sinker.errors.UnwrapError;
 import sinker.internal.Errors;
+#end
 
 /**
 	Wrapper of `Null<T>` for:

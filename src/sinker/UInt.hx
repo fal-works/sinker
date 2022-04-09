@@ -1,7 +1,9 @@
 package sinker;
 
-import sinker.internal.Errors;
+#if sinker_debug
 import sinker.errors.CastError;
+import sinker.internal.Errors;
+#end
 
 /**
 	Unsigned integer based on `Int`.

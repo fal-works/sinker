@@ -1,8 +1,10 @@
 package sinker;
 
-import sinker.internal.Errors;
+#if sinker_debug
 import sinker.errors.CastError;
 import sinker.errors.UnwrapError;
+import sinker.internal.Errors;
+#end
 
 /**
 	Represents either an `UInt` value or the absense of valid value.

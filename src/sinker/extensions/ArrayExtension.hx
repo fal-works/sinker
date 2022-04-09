@@ -2,12 +2,12 @@ package sinker.extensions;
 
 import sinker.Array;
 import sinker.UInt;
-#if sinker_debug
-import sinker.internal.ArrayErrors;
-import sinker.errors.RangeError;
-#end
 
 using sinker.extensions.ArrayFunctionalExtension;
+#if sinker_debug
+import sinker.errors.RangeError;
+import sinker.internal.ArrayErrors;
+#end
 
 /**
 	Statid extension for `Array`.
