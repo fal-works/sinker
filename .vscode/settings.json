@@ -1,4 +1,7 @@
 {
+  "terminal.integrated.env.windows": {
+    "PATH": "${env:PATH};${workspaceRoot}"
+  },
   "editor.tabSize": 2,
   "editor.insertSpaces": false,
   "files.eol": "\n",

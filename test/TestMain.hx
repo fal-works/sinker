@@ -4,10 +4,10 @@ function main() {
 }
 
 function printRuntimeInfo() {
-	#if sys
+	#if (sys || hxnodejs)
 	final now = Date.now();
 	final target = #if interp "Eval" #elseif hl "HashLink" #elseif js "JavaScript" #else "unknown" #end;
-	Sys.println('time:   $now');
-	Sys.println('target: $target');
+	Sys.println('datetime: $now');
+	Sys.println('target:   $target');
 	#end
 }
