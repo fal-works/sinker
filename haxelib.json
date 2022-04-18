@@ -6,9 +6,9 @@
 		"utility"
 	],
 	"description": "Core utility library. Provides enhanced basic types such as UInt, Array<T>, Maybe<T> and some more.",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"classPath": "src/",
-	"releasenote": "Added/improved some methods of Array<T> and Maybe<T>. Removed Callbacks classes.",
+	"releasenote": "Add @:transitive meta to support Haxe 4.2. Throw Exception instead of String. Deprecate some String methods.",
 	"contributors": [
 		"fal-works"
 	],
