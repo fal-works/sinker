@@ -62,6 +62,7 @@
   "files.insertFinalNewline": true,
   "files.associations": {
     "LICENSE": "plaintext",
+    "COPYRIGHT": "plaintext",
   },
   "[plaintext]": {
     "files.trimTrailingWhitespace": false,
