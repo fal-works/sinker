@@ -3,7 +3,7 @@ package sinker;
 import haxe.Constraints.Function;
 #if sinker_debug
 import sinker.errors.UnwrapError;
-import sinker.internal.Errors;
+import sinker.internal.ErrorMsg;
 #end
 
 /**
@@ -114,7 +114,7 @@ abstract Maybe<T>(Null<T>) {
 	**/
 	public extern inline function unwrap(): T {
 		#if sinker_debug
-		if (this == null) throw new UnwrapError(Errors.maybeUnwrap());
+		if (this == null) throw new UnwrapError(ErrorMsg.maybeUnwrap());
 		#end
 
 		@:nullSafety(Off)

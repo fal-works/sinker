@@ -3,7 +3,7 @@ package sinker;
 import Array as StdArray;
 #if sinker_debug
 import sinker.errors.RangeError;
-import sinker.internal.ArrayErrors;
+import sinker.internal.ArrayErrorMsg;
 #end
 
 /**
@@ -36,7 +36,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 
 	@:op([]) extern inline function get(index: UInt): T {
 		#if sinker_debug
-		if (index >= length) throw new RangeError(ArrayErrors.index(this, index));
+		if (index >= length) throw new RangeError(ArrayErrorMsg.index(this, index));
 		#end
 
 		#if cpp
@@ -48,7 +48,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 
 	@:op([]) extern inline function set(index: UInt, value: T): T {
 		#if sinker_debug
-		if (index >= length) throw new RangeError(ArrayErrors.index(this, index));
+		if (index >= length) throw new RangeError(ArrayErrorMsg.index(this, index));
 		#end
 
 		#if cpp

@@ -2,7 +2,7 @@ package sinker;
 
 #if sinker_debug
 import sinker.errors.RangeError;
-import sinker.internal.ArrayErrors;
+import sinker.internal.ArrayErrorMsg;
 #end
 
 /**
@@ -36,10 +36,10 @@ class Arrays {
 	): Void {
 		#if sinker_debug
 		if (source == destination)
-			throw new Error(ArrayErrors.blitSame());
+			throw new Error(ArrayErrorMsg.blitSame());
 		if (sourcePosition + rangeLength > source.length
 			|| destinationPosition + rangeLength > destination.length) {
-			throw new RangeError(ArrayErrors.blitBounds(
+			throw new RangeError(ArrayErrorMsg.blitBounds(
 				source,
 				sourcePosition,
 				destination,
@@ -73,9 +73,9 @@ class Arrays {
 	): Void {
 		#if sinker_debug
 		if (source == destination)
-			throw new Error(ArrayErrors.blitSame());
+			throw new Error(ArrayErrorMsg.blitSame());
 		if (rangeLength > source.length || rangeLength > destination.length) {
-			throw new RangeError(ArrayErrors.blitZeroBounds(
+			throw new RangeError(ArrayErrorMsg.blitZeroBounds(
 				source,
 				destination,
 				rangeLength

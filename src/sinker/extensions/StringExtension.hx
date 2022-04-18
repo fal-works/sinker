@@ -1,6 +1,6 @@
 package sinker.extensions;
 
-import sinker.internal.Errors;
+import sinker.internal.ErrorMsg;
 
 using sinker.extensions.StringExtension;
 
@@ -136,7 +136,7 @@ class StringExtension {
 	@:deprecated
 	public static inline function firstCharCode(s: String): Int {
 		final charCode = s.charCodeAt(0);
-		if (charCode == null) throw new Error(Errors.emptyString());
+		if (charCode == null) throw new Error(ErrorMsg.emptyString());
 		else return charCode;
 	}
 
@@ -147,7 +147,7 @@ class StringExtension {
 	@:deprecated
 	public static inline function lastCharCode(s: String): Int {
 		final charCode = s.charCodeAt(s.length - 1);
-		if (charCode == null) throw new Error(Errors.emptyString());
+		if (charCode == null) throw new Error(ErrorMsg.emptyString());
 		else return charCode;
 	}
 }

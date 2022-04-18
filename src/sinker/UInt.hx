@@ -2,7 +2,7 @@ package sinker;
 
 #if sinker_debug
 import sinker.errors.CastError;
-import sinker.internal.Errors;
+import sinker.internal.ErrorMsg;
 #end
 
 /**
@@ -28,7 +28,7 @@ abstract UInt(Int) to Int from std.UInt to std.UInt {
 	**/
 	@:from public static extern inline function fromInt(v: Int): UInt {
 		#if sinker_debug
-		if (v < 0) throw new CastError(Errors.uintFromInt(v));
+		if (v < 0) throw new CastError(ErrorMsg.uintFromInt(v));
 		#end
 		return new UInt(v);
 	}

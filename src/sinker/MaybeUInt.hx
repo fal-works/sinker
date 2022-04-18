@@ -3,7 +3,7 @@ package sinker;
 #if sinker_debug
 import sinker.errors.CastError;
 import sinker.errors.UnwrapError;
-import sinker.internal.Errors;
+import sinker.internal.ErrorMsg;
 #end
 
 /**
@@ -36,7 +36,7 @@ abstract MaybeUInt(UInt) from UInt {
 	@:from public static extern inline function fromInt(value: Int): MaybeUInt {
 		#if sinker_debug
 		if (-1 <= value) return cast value;
-		else throw new CastError(Errors.maybeUIntFromInt(value));
+		else throw new CastError(ErrorMsg.maybeUIntFromInt(value));
 		#else
 		return cast value;
 		#end
@@ -60,7 +60,7 @@ abstract MaybeUInt(UInt) from UInt {
 	**/
 	public extern inline function unwrap(): UInt {
 		#if sinker_debug
-		if (isNone()) throw new UnwrapError(Errors.maybeUIntUnwrap());
+		if (isNone()) throw new UnwrapError(ErrorMsg.maybeUIntUnwrap());
 		#end
 		return this;
 	}

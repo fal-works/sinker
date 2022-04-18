@@ -4,7 +4,7 @@ package sinker.internal;
 /**
 	Functions for generating error messages related to `Array`.
 **/
-class ArrayErrors {
+class ArrayErrorMsg {
 	public static function index(array: Array<Dynamic>, index: UInt): String
 		return 'Index $index is out of bounds. Array length: ${array.length}';
 

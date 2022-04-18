@@ -6,7 +6,7 @@ import sinker.UInt;
 using sinker.extensions.ArrayFunctionalExtension;
 #if sinker_debug
 import sinker.errors.RangeError;
-import sinker.internal.ArrayErrors;
+import sinker.internal.ArrayErrorMsg;
 #end
 
 /**
@@ -88,7 +88,7 @@ class ArrayExtension {
 	): Array<T> {
 		#if sinker_debug
 		if (endIndex > _this.length)
-			throw new RangeError(ArrayErrors.fillBounds(_this, startIndex, endIndex));
+			throw new RangeError(ArrayErrorMsg.fillBounds(_this, startIndex, endIndex));
 		#end
 
 		var i = startIndex;
@@ -120,7 +120,7 @@ class ArrayExtension {
 		#if sinker_debug
 		if (sourceIndex + rangeLength > _this.length
 			|| destinationIndex + rangeLength > _this.length) {
-			throw new RangeError(ArrayErrors.blitInternalBounds(
+			throw new RangeError(ArrayErrorMsg.blitInternalBounds(
 				_this,
 				sourceIndex,
 				destinationIndex,
@@ -214,7 +214,7 @@ class ArrayExtension {
 	): Void {
 		#if sinker_debug
 		if (indexA >= _this.length || indexB >= _this.length)
-			throw new RangeError(ArrayErrors.swapBounds(_this, indexA, indexB));
+			throw new RangeError(ArrayErrorMsg.swapBounds(_this, indexA, indexB));
 		#end
 
 		var tmp = _this[indexA];

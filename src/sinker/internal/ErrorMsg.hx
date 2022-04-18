@@ -3,7 +3,7 @@ package sinker.internal;
 /**
 	Functions for generating error messages.
 **/
-class Errors {
+class ErrorMsg {
 	#if sinker_debug
 	public static function uintFromInt(value: Int): String
 		return 'Cannot cast to UInt. Invalid value: $value';
