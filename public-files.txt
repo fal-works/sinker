@@ -3,4 +3,5 @@ extraParams.hxml
 haxelib.json
 LICENSE
 README.md
+COPYRIGHT
 Run.hx
