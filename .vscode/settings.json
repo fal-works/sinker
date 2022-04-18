@@ -1,16 +1,9 @@
 {
+  // ---------------------------------------------------------------------------
+  // Project-specific settings
   "terminal.integrated.env.windows": {
-    "PATH": "${env:PATH};${workspaceRoot}"
+    "PATH": "${env:PATH};${workspaceRoot}",
   },
-  "editor.tabSize": 2,
-  "editor.insertSpaces": false,
-  "editor.codeActionsOnSave": {
-    "source.sortImports": true
-  },
-  "files.eol": "\n",
-  "files.trimTrailingWhitespace": true,
-  "files.trimFinalNewlines": true,
-  "files.insertFinalNewline": true,
   "haxe.configurations": [
     {
       "label": "Eval",
@@ -52,23 +45,40 @@
       ]
     },
   ],
-  "haxecheckstyle.sourceFolders": [
-    "src",
-    "test"
-  ],
+  // ---------------------------------------------------------------------------
+  // Haxe settings
+  "[haxe]": {
+    "editor.insertSpaces": false,
+    "editor.codeActionsOnSave": {
+      "source.sortImports": true
+    },
+  },
+  // ---------------------------------------------------------------------------
+  // Common settings
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "LICENSE": "plaintext",
+  },
+  "[plaintext]": {
+    "files.trimTrailingWhitespace": false,
+    "files.trimFinalNewlines": false,
+    "files.insertFinalNewline": false,
+  },
   "[markdown]": {
-    "editor.wordWrap": "on",
-    "editor.quickSuggestions": false,
     "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
     "editor.renderWhitespace": "boundary",
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
   },
   "[json]": {
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[jsonc]": {
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "vscode.json-language-features"
   }
 }
