@@ -4,6 +4,7 @@ import sinker.Array;
 import sinker.UInt;
 
 using sinker.extensions.ArrayFunctionalExtension;
+
 #if sinker_debug
 import sinker.errors.RangeError;
 import sinker.internal.ArrayErrorMsg;
@@ -88,7 +89,11 @@ class ArrayExtension {
 	): Array<T> {
 		#if sinker_debug
 		if (endIndex > _this.length)
-			throw new RangeError(ArrayErrorMsg.fillBounds(_this, startIndex, endIndex));
+			throw new RangeError(ArrayErrorMsg.fillBounds(
+				_this,
+				startIndex,
+				endIndex
+			));
 		#end
 
 		var i = startIndex;

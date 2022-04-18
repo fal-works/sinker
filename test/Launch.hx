@@ -9,7 +9,7 @@ function main() {
 	Sys.command("haxe", args);
 }
 
-function processArguments(args: Array<String>):Array<String> {
+function processArguments(args: Array<String>): Array<String> {
 	final target = sanitizeTarget(args[0]);
 	return ['$testHxmlDir/$target.hxml'].concat(args.slice(1));
 }

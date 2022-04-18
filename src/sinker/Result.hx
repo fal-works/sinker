@@ -1,4 +1,5 @@
 package sinker;
+
 import sinker.errors.UnwrapError;
 
 /**
