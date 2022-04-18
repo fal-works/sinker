@@ -1,8 +1,10 @@
 {
 	"name": "sinker",
 	"url": "https://github.com/fal-works/sinker/",
-	"license": "MIT",
-	"tags": ["utility"],
+	"license": "Apache",
+	"tags": [
+		"utility"
+	],
 	"description": "Core utility library. Provides enhanced basic types such as UInt, Array<T>, Maybe<T> and some more.",
 	"version": "0.5.0",
 	"classPath": "src/",
