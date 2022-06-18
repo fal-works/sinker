@@ -90,7 +90,7 @@ abstract Array<T>(StdArray<T>) from StdArray<T> to StdArray<T> {
 
 	public extern inline function map<S>(callback: T -> S): Array<S> {
 		#if (cpp && !cppia)
-		return this.map(f);
+		return this.map(callback);
 		#else
 		final len = length;
 		final newArray: Array<S> = Arrays.allocate(len);
